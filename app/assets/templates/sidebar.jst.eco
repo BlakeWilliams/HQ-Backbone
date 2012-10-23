@@ -1,0 +1,21 @@
+<h1 id="project-select" class="<%= "show" if @showProjects %>"><i class="icon-reorder"></i><span><%= @projectName %></span></h1>
+<div id="project-list" class="<%= "show" if @showProjects %>">
+  <% for project in @projects.models: %>
+    <div class="sidebar-project">
+      <a href="<%= project.url() %>"><%= project.get('name') %></a>
+    </div>
+  <% end %>
+</div>
+
+<% if @showActions: %>
+<div class="project-actions">
+  <div class="sidebar-action">
+    <h2>Issues</h2>
+    <ul>
+      <li>All Issues</li>
+      <li>Open Issues</li>
+      <li>Resolved Issues</li>
+    </ul>
+  </div>
+</div>
+<% end %>
