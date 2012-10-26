@@ -8,7 +8,7 @@ class HQ.Views.Layout extends Backbone.View
     this
 
   renderChild: ->
-    @$('#outlet').html @child.render().el
+    @child.setElement(@$('#outlet')).render()
 
   renderSidebar: ->
-    @$('#sidebar').html @sidebar.render().el
+    @sidebar.setElement(@$('#sidebar')).render()

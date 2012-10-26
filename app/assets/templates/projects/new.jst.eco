@@ -1,0 +1,9 @@
+<form>
+  <div class="field">
+    <input type="text" id="name" name="name" placeholder="Project Name"/>
+  </div>
+
+  <div class="field">
+    <textarea id="description" name="description" placeholder="Project Description"></textarea>
+  </div>
+</form>

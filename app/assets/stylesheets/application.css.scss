@@ -28,6 +28,9 @@ body {
     margin: 0;
     list-style: none;
   }
+  a {
+    color: #333333;
+  }
 }
 
 #outlet {
@@ -79,5 +82,26 @@ body {
   .sidebar-project {
     padding: 5px 15px 5px 15px;
     a { color: #fff; }
+  }
+
+  &.show {
+    display: block;
+  }
+}
+
+h3 {
+  i {
+    font-size: 15px;
+    vertical-align: middle;
+  }
+}
+form {
+  margin-top: 15px;
+  input {
+    width: 655px;
+  }
+  textarea {
+    height: 90px;
+    width: 655px;
   }
 }

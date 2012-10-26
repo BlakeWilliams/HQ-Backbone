@@ -3,7 +3,7 @@ class HQ.Views.ProjectIndex extends Backbone.View
 
   initialize: (options) ->
     HQ.router.layout.sidebar.updateProject()
-    HQ.router.layout.sidebar.toggleActions(false)
+    HQ.router.layout.sidebar.setChild(new HQ.Views.ProjectIndexSidebar())
     @collection.bind 'reset', @render, this
 
   render: ->

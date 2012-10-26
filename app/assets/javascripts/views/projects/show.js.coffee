@@ -3,9 +3,10 @@ class HQ.Views.ProjectShow extends Backbone.View
 
   initialize: (options) ->
     @model.on 'change', @render, this
+    console.log 'init'
+    HQ.router.layout.sidebar.setChild(new HQ.Views.ProjectShowSidebar())
   
   render: ->
     HQ.router.layout.sidebar.updateProject @model.get('name')
-    HQ.router.layout.sidebar.toggleActions(true)
     $(@el).html @template(project: @model)
     this

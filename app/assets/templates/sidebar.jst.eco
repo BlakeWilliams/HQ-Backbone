@@ -7,15 +7,5 @@
   <% end %>
 </div>
 
-<% if @showActions: %>
-<div class="project-actions">
-  <div class="sidebar-action">
-    <h2>Issues</h2>
-    <ul>
-      <li>All Issues</li>
-      <li>Open Issues</li>
-      <li>Resolved Issues</li>
-    </ul>
-  </div>
+<div id="actions">
 </div>
-<% end %>

@@ -1,2 +1,14 @@
-<h1><%= @project.get 'name' %></h1>
-<p><%= @project.get 'description' %></p>
+<div id="project">
+  <h1><%= @project.get 'name' %></h1>
+  <p><%= @project.get 'description' %></p>
+
+  <h2>Issues</h3>
+  <div id="issues">
+    <% for issue in @project.issues.models: %>
+      <div class="issue">
+        <h4><%= issue.get 'name' %></h5>
+        <p><%= issue.get 'name' %></p>
+      </div>
+    <% end %>
+  </div>
+</div>

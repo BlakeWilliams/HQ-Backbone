@@ -19,20 +19,20 @@ class HQ.Views.Sidebar extends Backbone.View
       showActions: @showActions
       showProjects: @showList
     })
-    if @showList
-      @$('#project-list').show() 
-      @$('#project-select').addClass('show')
+
+    @child.setElement(@$('#actions')).render() if @child
     this
+
+  setChild: (child) =>
+    @child = child
+    @render()
 
   toggleProjects: ->
     if @showList
       @showList = false
-      @$('#project-list').hide()
-      @$('#project-select').removeClass('show')
     else
       @showList = true
-      @$('#project-list').show()
-      @$('#project-select').addClass('show')
+    @render()
 
   gotoProject: (e) ->
     e.preventDefault()
