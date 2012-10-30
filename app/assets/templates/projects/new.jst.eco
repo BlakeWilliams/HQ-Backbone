@@ -6,4 +6,9 @@
   <div class="field">
     <textarea id="description" name="description" placeholder="Project Description"></textarea>
   </div>
+
+  <div class="actions">
+    <a class="btn cancel">Cancel</a>
+    <a class="btn btn-primary save" >Create Project</a>
+  </div>
 </form>

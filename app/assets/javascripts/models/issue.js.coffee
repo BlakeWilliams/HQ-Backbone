@@ -1,3 +1,3 @@
-class HQ.Models.Issue extends Backbone.Model
+class HQ.Issue extends Backbone.Model
   url: ->
     "/issues/#{@get 'id'}"

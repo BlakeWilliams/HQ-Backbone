@@ -6,8 +6,8 @@ class HQ.Router extends Backbone.Router
     'projects/:id': 'show'
 
   initialize: ->
-    @layout = new HQ.Views.Layout()
-    @layout.sidebar = new HQ.Views.Sidebar()
+    @layout = new HQ.Layout()
+    @layout.sidebar = new HQ.Sidebar()
     $('body').html @layout.render().el
 
   swap: (child, object) =>
@@ -20,18 +20,18 @@ class HQ.Router extends Backbone.Router
       @layout.renderChild()
 
   index: ->
-    projects = new HQ.Collections.Projects()
-    view = new HQ.Views.ProjectIndex collection: projects
+    projects = new HQ.Projects()
+    view = new HQ.ProjectIndex collection: projects
     @swap view, projects
 
   show: (id) ->
-    project = new HQ.Models.Project {id: id}
-    view = new HQ.Views.ProjectShow model: project
+    project = new HQ.Project {id: id}
+    view = new HQ.ProjectShow model: project
     @swap view, project
 
   new: ->
-    project = new HQ.Models.Project()
-    view = new HQ.Views.ProjectNew model: project
+    project = new HQ.Project()
+    view = new HQ.ProjectNew model: project
     @swap view
 
   clear: ->

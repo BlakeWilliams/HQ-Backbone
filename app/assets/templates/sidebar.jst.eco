@@ -1,5 +1,5 @@
 <h1 id="project-select" class="<%= "show" if @showProjects %>"><i class="icon-reorder"></i><span><%= @projectName %></span></h1>
-<div id="project-list" class="<%= "show" if @showProjects %>">
+<div id="project-list" class="<%= "show" if @showProjects && @projects.models.length != 0 %>">
   <% for project in @projects.models: %>
     <div class="sidebar-project">
       <a href="<%= project.url() %>"><%= project.get('name') %></a>

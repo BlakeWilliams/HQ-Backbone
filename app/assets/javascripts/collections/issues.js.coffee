@@ -1,3 +1,3 @@
-class HQ.Collections.Issues extends Backbone.Collection
-  model: HQ.Models.Issue
+class HQ.Issues extends Backbone.Collection
+  model: HQ.Issue
   url: '/issues'
