@@ -1,3 +1,5 @@
 class HQ.Issue extends Backbone.Model
   url: ->
-    "/issues/#{@get 'id'}"
+    base = "/isses"
+    return base if @isNew()
+    "#{base}/#{@get 'id'}"

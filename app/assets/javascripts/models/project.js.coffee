@@ -4,7 +4,9 @@ class HQ.Project extends Backbone.Model
     @issues = new HQ.Issues()
 
   url: ->
-    "/projects/#{@get 'id'}" 
+    base = "/projects"
+    return base if @isNew()
+    "#{base}/#{@get 'id'}"
 
   updateIssues: ->
     @issues.add @get('issues') if @get('issues')

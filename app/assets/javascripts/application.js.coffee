@@ -2,6 +2,7 @@
 #= require underscore
 #= require backbone
 #= require_self
+#= require hq
 #= require ./router
 #= require_tree ../templates
 #= require_tree ./models

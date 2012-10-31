@@ -11,6 +11,7 @@ class HQ.Router extends Backbone.Router
     $('body').html @layout.render().el
 
   swap: (child, object) =>
+    @layout.child._destroy if @layout.child
     @layout.child = child
     if object
       object.fetch
