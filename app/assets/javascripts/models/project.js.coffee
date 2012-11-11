@@ -13,8 +13,8 @@ class HQ.Project extends Backbone.Model
 
   validate: (attrs, options) ->
     errors = {}
-    if !attrs.name || (attrs.name && attrs.name.length <= 1)
-      errors['name'] = 'Name must be at least 2 characters'
+    if !attrs.name || (attrs.name && attrs.name.length >= 2 && attrs.name.length <= 22)
+      errors['name'] = 'Name must be between 2 and 22 characters'
 
     return errors if errors.length != undefined
     return null

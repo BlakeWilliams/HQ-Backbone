@@ -1,10 +1,11 @@
+<h1>New Project</h1>
 <form>
   <div class="field">
-    <input type="text" id="name" name="name" placeholder="Project Name"/>
+    <input type="text" id="name" name="name" placeholder="Project Name" value="<%= @project.get('name') %>"/>
   </div>
 
   <div class="field">
-    <textarea id="description" name="description" placeholder="Project Description"></textarea>
+    <textarea id="description" name="description" placeholder="Project Description"><%= @project.get('description') %></textarea>
   </div>
 
   <div class="actions">

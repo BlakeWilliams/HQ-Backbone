@@ -6,8 +6,8 @@
   <div id="issues">
     <% for issue in @project.issues.models: %>
       <div class="issue">
-        <h4><%= issue.get 'name' %></h5>
-        <p><%= issue.get 'name' %></p>
+        <h4 class="issue-name"><%= issue.get 'name' %></h5>
+        <p><%= issue.get 'description' %></p>
       </div>
     <% end %>
   </div>

@@ -13,6 +13,7 @@ body {
   header {
     h1 {
       color: #333;
+      cursor: pointer;
     }
   }
 }
@@ -49,6 +50,7 @@ body {
 #project-select {
   background: #222;
   color: #fafafa;
+  cursor: pointer;
   font-size: 16px;
   line-height: 1;
   margin-top: 0;
@@ -69,8 +71,8 @@ body {
 }
 
 #project-list {
-  display: none;
   color: #fff;
+  display: none;
   background: #444;
   margin-top: -12px;
   z-index: 10;

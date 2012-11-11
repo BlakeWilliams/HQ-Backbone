@@ -2,9 +2,9 @@ class HQ.Sidebar extends Backbone.View
   template: JST['sidebar']
 
   initialize: ->
-    @collection = new HQ.Projects()
-    @collection.fetch()
     @collection.on 'reset', @render, this
+    @collection.on 'add', @render, this
+    @collection.on 'remove', @render, this
 
     @updateProject()
 

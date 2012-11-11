@@ -1,13 +1,17 @@
 class HQ.Router extends Backbone.Router
   routes:
-    '': 'index'
-    'projects': 'index'
-    'projects/new': 'new'
-    'projects/:id': 'show'
+    '': 'projectIndex'
+    'projects': 'projectIndex'
+    'projects/new': 'newProject'
+    'projects/:id': 'showProject'
+    'projects/:id/issues/new': 'newIssue'
 
   initialize: ->
+    if !HQ.projects
+      HQ.projects = new HQ.Projects()
+      HQ.projects.fetch()
     @layout = new HQ.Layout()
-    @layout.sidebar = new HQ.Sidebar()
+    @layout.sidebar = new HQ.Sidebar collection: HQ.projects
     $('body').html @layout.render().el
 
   swap: (child, object) =>
@@ -20,19 +24,26 @@ class HQ.Router extends Backbone.Router
     else
       @layout.renderChild()
 
-  index: ->
-    projects = new HQ.Projects()
+  projectIndex: ->
+    projects = HQ.projects
     view = new HQ.ProjectIndex collection: projects
     @swap view, projects
 
-  show: (id) ->
-    project = new HQ.Project {id: id}
+  showProject: (id) ->
+    project = HQ.projects.get(id) || new HQ.Project {id: id}
     view = new HQ.ProjectShow model: project
     @swap view, project
 
-  new: ->
+  newProject: ->
     project = new HQ.Project()
     view = new HQ.ProjectNew model: project
+    @swap view
+
+  newIssue: (id) ->
+    project = HQ.projects.get(id) || new HQ.Project {id: id}
+    project.fetch()
+    issue = new HQ.Issue project: project
+    view = new HQ.NewIssue model: issue
     @swap view
 
   clear: ->

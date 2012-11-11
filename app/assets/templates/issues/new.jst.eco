@@ -1,0 +1,15 @@
+<h1>New Issue</h1>
+<form>
+  <div class="field">
+    <input type="text" id="name" name="name" placeholder="Issue Name" value="<%= @issue.get('name') %>"/>
+  </div>
+
+  <div class="field">
+    <textarea id="description" name="description" placeholder="Project Description"><%= @issue.get('description') %></textarea>
+  </div>
+
+  <div class="actions">
+    <a class="btn cancel">Cancel</a>
+    <a class="btn btn-primary save" >Create Issue</a>
+  </div>
+</form>

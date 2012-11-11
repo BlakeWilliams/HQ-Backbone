@@ -1,5 +1,5 @@
-class HQ.ProjectNew extends Backbone.View
-  template: JST['projects/new']
+class HQ.NewIssue extends Backbone.View
+  template: JST['issues/new']
 
   events:
     'click .save': 'save'
@@ -8,20 +8,29 @@ class HQ.ProjectNew extends Backbone.View
   initialize: ->
     HQ.router.layout.sidebar.updateProject()
     HQ.router.layout.sidebar.setChild()
+    @model.on 'error', (model, response, options) =>
+      @errors = JSON.parse(response.responseText)
+      @render()
 
   render: ->
-    $(@el).html @template()
+    $(@el).html @template(issue: @model)
+    @renderErrors()
+
+  renderErrors: ->
+    for error of @errors
+      $('#' + error).addClass('error')
 
   save: (e) ->
     e.preventDefault()
     attributes = 
       name: $('#name').val()
       description: $('#description').val()
-    console.log 'save'
+    console.log @model.url()
     @model.save attributes, 
       success: =>
+        @errors = false
         HQ.projects.add @model
-        HQ.router.navigate '/projects', true
+        HQ.router.navigate "/projects/#{@model.get 'project_id'}/issues/#{@model.get 'id'}", true
       error: (m, err) ->
         console.log m, err
         for attr of attributes
@@ -34,3 +43,4 @@ class HQ.ProjectNew extends Backbone.View
   cancel: (e) ->
     e.preventDefault()
     HQ.router.navigate $(e.currentTarget).attr('href'), true
+
