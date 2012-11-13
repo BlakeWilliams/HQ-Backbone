@@ -5,8 +5,6 @@ class HQ.ProjectIndex extends Backbone.View
     'click h1 a': 'gotoProject'
 
   initialize: (options) ->
-    HQ.router.layout.sidebar.updateProject()
-    HQ.router.layout.sidebar.setChild(new HQ.ProjectIndexSidebar())
     @collection.bind 'reset', @render, this
 
   render: ->

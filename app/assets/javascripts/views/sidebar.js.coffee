@@ -24,6 +24,8 @@ class HQ.Sidebar extends Backbone.View
     this
 
   setChild: (child) =>
+    if @child
+      @child._destroy
     @child = child
     @render()
 
@@ -39,7 +41,19 @@ class HQ.Sidebar extends Backbone.View
     HQ.router.navigate $(e.currentTarget).attr('href'), true
     @toggleProjects()
 
-  updateProject: (projectName = "All Projects") =>
+  updateProject: (projectName) =>
+    if projectName instanceof HQ.Project
+      projectName = projectName.get('name')
+    else if projectName instanceof HQ.Issue
+      if projectName.get('project') && projectName.get('project').get('name')
+        projectName = projectName.get('project').get('name')
+      else
+        projectName.get('project').fetch
+          success: =>
+            @updateProject projectName.get('project').get('name')
+    else if !_.isString(projectName)
+      projectName = "All Projects"
+
     @projectName = projectName
     @render()
 

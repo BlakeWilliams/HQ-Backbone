@@ -1,0 +1,3 @@
+<h1><%= @issue.get 'name' %></h1>
+<p><%= @issue.get 'description' %></p>
+<% console.log @issue %>

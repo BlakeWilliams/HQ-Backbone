@@ -6,11 +6,17 @@ class HQ.ProjectNew extends Backbone.View
     'click .cancel': 'cancel'
 
   initialize: ->
-    HQ.router.layout.sidebar.updateProject()
-    HQ.router.layout.sidebar.setChild()
+    @model.on 'error', (model, response, options) =>
+      @errors = JSON.parse(response.responseText)
+      @render()
 
   render: ->
-    $(@el).html @template()
+    $(@el).html @template(project: @model)
+    @renderErrors()
+
+  renderErrors: ->
+    for error of @errors
+      $('#' + error).addClass('error')
 
   save: (e) ->
     e.preventDefault()

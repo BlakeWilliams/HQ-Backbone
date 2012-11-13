@@ -9,8 +9,13 @@ class HQ.ProjectShowSidebar extends Backbone.View
     $(@el).html @template
     this
 
-  delete: ->
-    console.log 'Destroy the project'
+  delete: (e) ->
+    e.preventDefault()
+    if confirm("Are you sure you want to destroy this project?")
+      @model.destroy
+        success: =>
+          HQ.projects.remove(@model)
+      HQ.router.navigate '/projects', true
 
   newIssue: (e) ->
     e.preventDefault()

@@ -28,17 +28,9 @@ class HQ.NewIssue extends Backbone.View
     console.log @model.url()
     @model.save attributes, 
       success: =>
-        @errors = false
         HQ.projects.add @model
-        HQ.router.navigate "/projects/#{@model.get 'project_id'}/issues/#{@model.get 'id'}", true
-      error: (m, err) ->
-        console.log m, err
-        for attr of attributes
-          attribute = $("##{attr}")
-          if err[attr]
-            attribute.addClass('error')
-          else
-            attribute.removeClass('error')
+        console.log @model.url
+        HQ.router.navigate @model.url(), true
 
   cancel: (e) ->
     e.preventDefault()
