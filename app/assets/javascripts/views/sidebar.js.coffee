@@ -51,8 +51,8 @@ class HQ.Sidebar extends Backbone.View
         projectName.get('project').fetch
           success: =>
             @updateProject projectName.get('project').get('name')
-    else if !_.isString(projectName)
-      projectName = "All Projects"
+    else
+      projectName = "No Project Selected"
 
     @projectName = projectName
     @render()

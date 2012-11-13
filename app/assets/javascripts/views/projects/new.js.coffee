@@ -23,19 +23,13 @@ class HQ.ProjectNew extends Backbone.View
     attributes = 
       name: $('#name').val()
       description: $('#description').val()
-    console.log 'save'
+    @$el.find('.save').attr 'disabled', 'true'
     @model.save attributes, 
       success: =>
         HQ.projects.add @model
         HQ.router.navigate '/projects', true
-      error: (m, err) ->
-        console.log m, err
-        for attr of attributes
-          attribute = $("##{attr}")
-          if err[attr]
-            attribute.addClass('error')
-          else
-            attribute.removeClass('error')
+      error: =>
+        @$el.find('.save').removeAttr 'disabled'
 
   cancel: (e) ->
     e.preventDefault()
