@@ -13,3 +13,4 @@ class HQ.ProjectShow extends Backbone.View
 
   gotoIssue: (e) ->
     e.preventDefault() 
+    HQ.router.navigate $(e.currentTarget).attr('href'), true

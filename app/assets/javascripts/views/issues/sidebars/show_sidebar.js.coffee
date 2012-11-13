@@ -1,14 +1,23 @@
 class HQ.IssueShowSidebar extends Backbone.View
   template: JST['issues/_show_sidebar']
 
+  initialize: ->
+    @model.on 'change', @render, this
+
   events:
-    'click #new-project': 'newProject'
+    'click .resolved': 'resolve'
+    'click .open': 'open'
   
   render: ->
-    $(@el).html @template
+    $(@el).html @template(issue: @model)
     this
 
-  newProject: (e) ->
+  resolve: (e) ->
     e.preventDefault()
-    console.log(e)
-    HQ.router.navigate $(e.target).attr('href'), true
+    @model.setStatus 'resolved' if !@model.resolved()
+    @render()
+
+  open: (e) ->
+    e.preventDefault()
+    @model.setStatus 'open' if !@model.open()
+    @render()
