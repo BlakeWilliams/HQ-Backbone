@@ -4,23 +4,28 @@
 .resolved, .open {
   width: 89px;
 }
-.open {
-  margin-left: -5px;
 
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  
-  -moz-border-top-left-radius: 0;
-  -moz-border-bottom-left-radius: 0;
 
-  -webkit-border-top-left-radius: 0;
-  -webkit-border-bottom-left-radius: 0;
+#issue {
+  .actions {
+    a {
+      display: block;
+      float: left;
+      width: 80px;
+      text-align: center;
+    }
+  }
 }
 
-.resolved {
-  -moz-border-top-right-radius: 0;
-  -moz-border-bottom-right-radius: 0;
+.status {
+  background: #c7ffbe;
+  height: 100%;
+  left: 0;
+  top: 0;
+  position: absolute;
+  width: 5px;
 
-  -webkit-border-top-right-radius: 0;
-  -webkit-border-bottom-right-radius: 0;
+
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
 }

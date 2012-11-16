@@ -4,8 +4,10 @@
 
   <h2>Issues</h3>
   <div id="issues">
-  <% if @project.issues.length == 0: %>
-    <p>No issues were found.</p>
+  <% if !@project.issues.isLoaded: %>
+    <p>Loading issues...</p>
+  <% else if @project.issues.length == 0: %>
+    <p>No issues found for this project.</p>
   <% else: %>
     <% for issue in @project.issues.models: %>
       <div class="issue">

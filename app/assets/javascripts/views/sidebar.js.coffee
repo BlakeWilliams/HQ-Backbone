@@ -11,6 +11,7 @@ class HQ.Sidebar extends Backbone.View
   events:
     'click #project-select': 'toggleProjects'
     'click .sidebar-project a': 'gotoProject'
+    'click #actions a': 'goto'
 
   render: ->
     $(@el).html(@template {
@@ -18,16 +19,10 @@ class HQ.Sidebar extends Backbone.View
       projectName: @projectName
       showActions: @showActions
       showProjects: @showList
+      child: @child
     })
-
-    @child.setElement(@$('#actions')).render() if @child
     this
 
-  setChild: (child) =>
-    if @child
-      @child._destroy
-    @child = child
-    @render()
 
   toggleProjects: ->
     if @showList
@@ -36,10 +31,6 @@ class HQ.Sidebar extends Backbone.View
       @showList = true
     @render()
 
-  gotoProject: (e) ->
-    e.preventDefault()
-    HQ.router.navigate $(e.currentTarget).attr('href'), true
-    @toggleProjects()
 
   updateProject: (projectName) =>
     if projectName instanceof HQ.Project
@@ -63,3 +54,12 @@ class HQ.Sidebar extends Backbone.View
     else
       @showActions = false
     @render()
+
+  gotoProject: (e) ->
+    e.preventDefault()
+    HQ.router.navigate $(e.currentTarget).attr('href'), true
+    @toggleProjects()
+
+  goto: (e) ->
+    e.preventDefault()
+    HQ.router.navigate $(e.currentTarget).attr('href'), true
