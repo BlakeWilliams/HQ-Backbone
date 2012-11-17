@@ -13,4 +13,5 @@ HQ.Views.Project = Backbone.View.extend
 
   gotoIssue: (e) ->
     e.preventDefault() 
-    HQ.router.navigate $(e.currentTarget).attr('href'), true
+    issueID = $(e.currentTarget).data('id')
+    HQ.router.gotoIssue @model.issues.get(issueID)

@@ -1,4 +1,4 @@
-HQ.Routers.ProjectRoutes =
+HQ.Routers.Projects =
   gotoProjects: (projects) ->
     @navigate "/projects"
     view = new HQ.Views.Projects collection: projects
@@ -26,4 +26,3 @@ HQ.Routers.ProjectRoutes =
 
   newProject: ->
     @gotoNewProject
-

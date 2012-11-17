@@ -42,8 +42,9 @@ class HQ.Views.Sidebar extends Backbone.View
     else if obj instanceof HQ.Models.Issue
       if obj.get('project')
         @setName obj.get('project').get('name')
+        console.log 'here'
       else
-        project = HQ.Models.Project id: obj.get('project_id')
+        project = new HQ.Models.Project id: obj.get('project_id')
         project.fetch
           success: => @setName project.get('name')
     else

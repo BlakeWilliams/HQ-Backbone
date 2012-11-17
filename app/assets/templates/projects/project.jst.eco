@@ -11,7 +11,7 @@
   <% else: %>
     <% for issue in @project.issues.models: %>
       <div class="issue">
-        <h4 class="issue-name"><a href="<%= issue.url() %>"><%= issue.get 'name' %></a></h5>
+        <h4 class="issue-name"><a href="<%= issue.url() %>" data-id="<%= issue.get('id') %>"><%= issue.get 'name' %></a></h5>
         <p><%= issue.get 'description' %></p>
       </div>
     <% end %>
