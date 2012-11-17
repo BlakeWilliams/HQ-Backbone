@@ -17,6 +17,7 @@ newModel = Backbone.Model.extend
   _isLoaded: ->
     @isLoaded = true
     @off null, @_isLoaded, this
+    @trigger 'loaded'
 
 Backbone.Model = newModel
 
@@ -25,14 +26,14 @@ oldCollection = Backbone.Collection
 newCollection = Backbone.Collection.extend
   constructor: (attributes, options) ->
     @isLoaded = false
+    @on 'sync', @_isLoaded, this
     @on 'reset', @_isLoaded, this
     @on 'add', @_isLoaded, this
     oldCollection.apply(this, arguments)
 
   _isLoaded: ->
     @isLoaded = true
+    @off null, @_isLoaded, this
     @trigger 'loaded'
-    @off null, @_isLoaded, this
-    @off null, @_isLoaded, this
 
 Backbone.Collection = newCollection

@@ -1,7 +1,9 @@
-class HQ.Project extends Backbone.Model
+class HQ.Models.Project extends Backbone.Model
   initialize: ->
+    @issues = new HQ.Collections.Issues()
     @on 'change', @updateIssues
-    @issues = new HQ.Issues()
+    @on 'sync', => @issues.trigger('sync')
+    @issues.on 'loaded', => @trigger('change')
 
   url: ->
     base = "/projects"

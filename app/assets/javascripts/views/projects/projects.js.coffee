@@ -1,5 +1,5 @@
-class HQ.ProjectIndex extends Backbone.View
-  template: JST['projects/index']
+HQ.Views.Projects = Backbone.View.extend
+  template: JST['projects/projects']
 
   events: ->
     'click h1 a': 'gotoProject'

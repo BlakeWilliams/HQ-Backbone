@@ -1,21 +1,19 @@
-HQ.ProjectRoutes =
+HQ.Routers.ProjectRoutes =
   gotoProjects: (projects) ->
     @navigate "/projects"
-    view = new HQ.ProjectIndex collection: projects
+    view = new HQ.Views.Projects collection: projects
     @swap view, projects
 
-  projectIndex: ->
-    projects = HQ.projects
+  projects: ->
     @gotoProjects HQ.projects
-    console.log 'hi'
 
 
   gotoProject: (project) ->
     @navigate "/projects/#{project.get 'id'}"
-    view = new HQ.ProjectShow model: project
+    view = new HQ.Views.Project model: project
     @swap view, project
 
-  showProject: (id) ->
+  project: (id) ->
     project = HQ.projects.get(id) || new HQ.Project {id: id}
     @gotoProject project
 

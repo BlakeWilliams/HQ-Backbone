@@ -11,6 +11,10 @@
 #= require_tree ./views
 
 window.HQ =
+  Models: {}
+  Collections: {}
+  Views: {}
+  Routers: {}
   init: ->
     HQ.router = new HQ.Router()
     Backbone.history.start()

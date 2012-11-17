@@ -1,4 +1,4 @@
-class HQ.Sidebar extends Backbone.View
+class HQ.Views.Sidebar extends Backbone.View
   template: JST['sidebar']
 
   initialize: ->
@@ -31,22 +31,23 @@ class HQ.Sidebar extends Backbone.View
       @showList = true
     @render()
 
-
-  updateProject: (projectName) =>
-    if projectName instanceof HQ.Project
-      projectName = projectName.get('name')
-    else if projectName instanceof HQ.Issue
-      if projectName.get('project') && projectName.get('project').get('name')
-        projectName = projectName.get('project').get('name')
-      else
-        projectName.get('project').fetch
-          success: =>
-            @updateProject projectName.get('project').get('name')
-    else
-      projectName = "No Project Selected"
-
-    @projectName = projectName
+  setName: (name) ->
+    @projectName = name
     @render()
+
+
+  updateProject: (obj) =>
+    if obj instanceof HQ.Models.Project
+      @setName obj.get('name')
+    else if obj instanceof HQ.Models.Issue
+      if obj.get('project')
+        @setName obj.get('project').get('name')
+      else
+        project = HQ.Models.Project id: obj.get('project_id')
+        project.fetch
+          success: => @setName project.get('name')
+    else
+      @setName "No Project Selected"
 
   toggleActions: (value) ->
     if value == true
@@ -57,7 +58,7 @@ class HQ.Sidebar extends Backbone.View
 
   gotoProject: (e) ->
     e.preventDefault()
-    HQ.router.navigate $(e.currentTarget).attr('href'), true
+    HQ.router.gotoProject @collection.get $(e.currentTarget).attr('href')
     @toggleProjects()
 
   goto: (e) ->

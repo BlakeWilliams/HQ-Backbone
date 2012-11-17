@@ -2,7 +2,7 @@
 <div id="project-list" class="<%= "show" if @showProjects && @projects.models.length != 0 %>">
   <% for project in @projects.models: %>
     <div class="sidebar-project">
-      <a href="<%= project.url() %>"><%= project.get('name') %></a>
+      <a href="<%= project.get('id') %>"><%= project.get('name') %></a>
     </div>
   <% end %>
 </div>

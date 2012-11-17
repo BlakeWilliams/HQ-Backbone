@@ -1,19 +1,19 @@
 class HQ.Router extends Backbone.Router
   routes:
-    '': 'projectIndex'
-    'projects': 'projectIndex'
+    '': 'projects'
+    'projects': 'projects'
     'projects/new': 'newProject'
-    'projects/:id': 'showProject'
+    'projects/:id': 'project'
     'projects/:project_id/issues/new': 'newIssue'
-    'projects/:project_id/issues/:id': 'showIssue'
+    'projects/:project_id/issues/:id': 'issue'
 
   initialize: ->
     if !HQ.projects
-      HQ.projects = new HQ.Projects()
+      HQ.projects = new HQ.Collection.Projects()
       HQ.projects.fetch()
 
-    @layout = new HQ.Layout()
-    @sidebar = new HQ.Sidebar collection: HQ.projects
+    @layout = new HQ.Views.Layout()
+    @sidebar = new HQ.Views.Sidebar collection: HQ.projects
     @layout.sidebar = @sidebar
 
     $('body').html @layout.render().el
@@ -31,17 +31,16 @@ class HQ.Router extends Backbone.Router
 
 
   newIssue: (id) ->
-    project = HQ.projects.get(id) || new HQ.Project {id: id}
+    project = HQ.projects.get(id) || new HQ.Models.Project {id: id}
     project.fetch()
-    issue = new HQ.Issue project: project
-    view = new HQ.NewIssue model: issue
+    issue = new HQ.Models.Issue project: project
+    view = new HQ.Views.NewIssue model: issue
     @swap view, issue
   
-  showIssue: (project_id, id) ->
-    issue = new HQ.Issue id: id, project_id: project_id
-    view = new HQ.IssueShow model: issue
+  issue: (project_id, id) ->
+    issue = new HQ.Models.Issue id: id, project_id: project_id
+    view = new HQ.Views.Issue model: issue
 
     @swap view, issue
 
-console.log HQ.ProjectRoutes
-_.extend HQ.Router.prototype, HQ.ProjectRoutes
+_.extend HQ.Router.prototype, HQ.Routers.ProjectRoutes
