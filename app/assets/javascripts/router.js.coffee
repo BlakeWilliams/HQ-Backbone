@@ -23,8 +23,10 @@ class HQ.Router extends Backbone.Router
     @layout.child = child
 
     @layout.renderChild()
-    object.fetch
-      success: => @layout.renderChild()
+
+    unless object.isLoaded
+      object.fetch
+        success: => @layout.renderChild()
 
     # Set project name here
     @sidebar.updateProject object

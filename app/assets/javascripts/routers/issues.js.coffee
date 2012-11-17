@@ -16,6 +16,8 @@ HQ.Routers.Issues =
     @swap view, issue
 
   issue: (project_id, id) ->
-    issue = new HQ.Models.Issue id: id, project_id: project_id
-    issue.fetch()
+    issue = HQ.projects.findIssue(project_id, id)
+    unless issue
+      issue or= new HQ.Models.Issue id: id, project_id: project_id
+      issue.fetch()
     @gotoIssue issue
