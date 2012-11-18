@@ -1,10 +1,7 @@
 Backbone.View = Backbone.View.extend
   _destroy: ->
-    @unbind()
     @leave() if @leave
-    @model.off(null, null, this) if @model
-    @collection.off(null, null, this) if @model
-    @destroy() if @destroy
+    @dispose()
 
 
 oldModel = Backbone.Model

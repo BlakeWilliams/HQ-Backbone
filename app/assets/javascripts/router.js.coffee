@@ -19,9 +19,10 @@ class HQ.Router extends Backbone.Router
     $('body').html @layout.render().el
 
   swap: (child, object, projectName) =>
-    @layout.child._destroy if @layout.child
+    console.log @layout.child
+    @layout.child._destroy() if @layout.child
     @layout.child = child
-
+    console.log @layout.child
     @layout.renderChild()
 
     unless object.isLoaded

@@ -5,6 +5,7 @@ HQ.Views.Project = Backbone.View.extend
     'click .issue-name a': 'gotoIssue'
 
   initialize: (options) ->
+    @count = 0
     @model.on 'change', @render, this
   
   render: ->
@@ -12,6 +13,8 @@ HQ.Views.Project = Backbone.View.extend
     this
 
   gotoIssue: (e) ->
+    console.log @count
+    @count += 1
     e.preventDefault() 
     issueID = $(e.currentTarget).data('id')
     HQ.router.gotoIssue @model.issues.get(issueID)
