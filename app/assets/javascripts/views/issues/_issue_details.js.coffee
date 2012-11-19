@@ -1,6 +1,10 @@
 class HQ.Views.IssueDetails extends Backbone.View
   template: JST['issues/_issue_details']
 
+  events: ->
+    'click .open': 'open'
+    'click .close': 'close'
+
   initialize: ->
     @poll = setInterval =>
       @model.fetch()
@@ -12,3 +16,15 @@ class HQ.Views.IssueDetails extends Backbone.View
 
   leave: ->
     clearInterval @poll
+
+  open: ->
+
+  close: (e) ->
+    e.preventDefault()
+    @model.set('status', 'resolved')
+    @model.save()
+
+  open: (e) ->
+    e.preventDefault()
+    @model.set('status', 'open')
+    @model.save()

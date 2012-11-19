@@ -1,4 +1,14 @@
 HQ.Routers.Issues =
+  gotoIssues: (issues) ->
+    @navigate "/issues"
+    view = new HQ.Views.Issues collection: issues
+    @swap view, issues
+
+  issues: ->
+    issues = new HQ.Collections.Issues()
+    issues.fetch()
+    @gotoIssues issues
+
   gotoNewIssue: (id) ->
     project = HQ.projects.get(id) || new HQ.Models.Project {id: id}
     project.fetch()

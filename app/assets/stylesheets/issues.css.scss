@@ -7,18 +7,18 @@
 
 
 #issue {
-  .actions {
+  #actions {
+    border: 1px solid #DEDEDE;
+    border-left: none;
+    border-right: none;
+    padding: 5px 0;
     a {
-      display: block;
-      float: left;
-      width: 80px;
-      text-align: center;
+      margin-right: 15px;
     }
   }
 }
 
 .status {
-  background: #c7ffbe;
   height: 100%;
   left: 0;
   top: 0;
@@ -28,4 +28,10 @@
 
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
+  &.open {
+    background: #ff9d9d;
+  }
+  &.resolved {
+    background: #c7ffbe;
+  }
 }

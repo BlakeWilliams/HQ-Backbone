@@ -1,6 +1,16 @@
 <h1><%= @issue.get 'name' %></h1>
 <p><%= @issue.get 'description' %></p>
 
+<div id="actions">
+  <% if @issue.open(): %>
+  <a href="#" class="close">Close Issue</a>
+  <% else: %>
+  <a href="#" class="open">Open Issue</a>
+  <% end %>
+  <a href="#" class="edit">Edit Issue</a>
+  <a href="#" class="delete">Delete Issue</a>
+</div>
+
 <h2>Discussion</h2>
 <% if !@issue.comments.isLoaded: %>
   <p>Loading Comments.</p>
@@ -12,5 +22,7 @@
       <%= comment.get 'content' %>
     </div>
   <% end %>
-
 <% end %>
+
+<div class="status <%= if @issue.open() then "open" else "resolved" %>"></div>
+

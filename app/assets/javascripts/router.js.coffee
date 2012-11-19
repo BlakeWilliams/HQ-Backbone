@@ -7,6 +7,9 @@ class HQ.Router extends Backbone.Router
     'projects/:project_id/issues/new': 'newIssue'
     'projects/:project_id/issues/:id': 'issue'
 
+
+    'issues': 'issues'
+
   initialize: ->
     if !HQ.projects
       HQ.projects = new HQ.Collection.Projects()

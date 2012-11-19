@@ -6,8 +6,7 @@ class HQ.Models.Issue extends Backbone.Model
     @comments = new HQ.Collections.Comments null, issue: this
     @on 'change', @updateComments, this
     @on 'sync', => @comments.trigger('sync')
-    #@comments.on 'loaded', => @trigger('change')
-    @on 'change', console.log 'changed'
+    @comments.on 'loaded', => @trigger('change')
 
   url: ->
     base = "/projects/#{@get('project_id')}/issues"

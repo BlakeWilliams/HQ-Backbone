@@ -1,0 +1,91 @@
+@mixin button($color) {
+  color: #ffffff;
+  display: inline-block;
+  padding: 4px 10px 4px;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 13px;
+  line-height: 18px;
+  text-align: center;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  vertical-align: middle;
+  background-color: $color;
+  border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.95) rgba(0, 0, 0, 0.2);
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  *margin-left: .3em;
+  -moz-user-select: none;
+  background-color: $color;
+  border-color: darken($color, 10);
+  border-color: rgba(darken($color, 10), 0.7);
+  border-color: rgba(darken($color, 10), 0.5) rgba(darken($color, 10), 0.6) rgba(darken($color, 10), 0.6) rgba(darken($color, 10), 0.7);
+  cursor: pointer;
+
+  //background-image: -moz-linear-gradient(top, $color, #e6e6e6);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from($color), to(darken($color,3)));
+  //background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+  //background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+
+  &:hover {
+    color: #ffffff;
+    background-color: darken($color, 8);
+    border-color: darken($color, 20);
+    border-color: rgba(darken($color, 20), 0.7);
+    text-decoration: none;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  }
+
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+}
+.btn { 
+  @include button(#eee);
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  color: #333333;
+  &:hover {
+    color: #333333;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  }
+}
+
+.btn-red   { @include button(#da4f49); }
+.btn-green { @include button(#40b940); }
+.btn-blue  { @include button(#0074cc); }
+.btn-dark { @include button(#777); }
+
+.btn:hover {
+  text-decoration: none;
+  -webkit-transition: background-position 0.1s linear;
+  -moz-transition: background-position 0.1s linear;
+  -ms-transition: background-position 0.1s linear;
+  -o-transition: background-position 0.1s linear;
+  transition: background-position 0.1s linear;
+}
+.btn:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+.btn.active,
+.btn:active {
+  background-image: none;
+  -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.15);
+  outline: 0;
+}
+.btn.disabled,
+.btn[disabled] {
+  cursor: default;
+  background-image: none;
+  background-color: #e6e6e6;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+

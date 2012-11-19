@@ -1,0 +1,7 @@
+<h1>Open Issues</h1>
+<% for issue in @issues.models: %>
+  <div class="issue">
+    <h3><%= issue.get 'name' %></h3>
+    <p><%= issue.get 'description' %></p>
+  </div>
+<% end %>

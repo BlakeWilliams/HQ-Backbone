@@ -1,11 +1,15 @@
 class IssuesController < ApplicationController
-  before_filter :find_project
+
+  def index
+    @issues = Issue.where('status = ?', 'open')
+  end
 
   def show
     @issue = Issue.find(params[:id])
   end
 
   def create
+    find_project
     @issue = Issue.new(params[:issue])
     if @issue.save
       render 'show'
