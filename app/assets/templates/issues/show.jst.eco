@@ -1,5 +1,7 @@
 <div class="status resolved"></div>
 <div id="issue">
-  <h1><%= @issue.get 'name' %></h1>
-  <p class="description"><%= @issue.get 'description' %></p>
+  <div id="issue-details">
+  </div>
+  <div id="new-comment">
+  </div>
 </div>

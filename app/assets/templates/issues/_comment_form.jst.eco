@@ -1,0 +1,4 @@
+<form>
+  <textarea name="content" id="content"><%= @comment.get 'content' %></textarea>
+  <input type="submit" class="btn" value="Post Comment" />
+</form>

@@ -1,0 +1,16 @@
+<h1><%= @issue.get 'name' %></h1>
+<p><%= @issue.get 'description' %></p>
+
+<h2>Discussion</h2>
+<% if !@issue.comments.isLoaded: %>
+  <p>Loading Comments.</p>
+<% else if @issue.comments.length == 0: %>
+  <p>This issue has no comments.</p>
+<% else: %>
+  <% for comment in @issue.comments.models: %>
+    <div class="comment">
+      <%= comment.get 'content' %>
+    </div>
+  <% end %>
+
+<% end %>
