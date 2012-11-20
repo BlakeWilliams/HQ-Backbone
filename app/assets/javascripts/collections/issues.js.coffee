@@ -3,3 +3,7 @@ class HQ.Collections.Issues extends Backbone.Collection
   url: '/issues'
 
   open: ->
+    @where status: 'open'
+
+  resolved: ->
+    @where status: 'resolved'

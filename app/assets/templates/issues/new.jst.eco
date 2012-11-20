@@ -10,6 +10,6 @@
 
   <div class="actions">
     <a class="btn cancel">Cancel</a>
-    <a class="btn btn-primary save" >Create Issue</a>
+    <a class="btn btn-blue save" >Create Issue</a>
   </div>
 </form>

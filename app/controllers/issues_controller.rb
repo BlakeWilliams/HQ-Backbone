@@ -27,6 +27,11 @@ class IssuesController < ApplicationController
     end
   end
 
+  def destroy
+    @issue = Issue.find(params[:id])
+    @issue.destroy
+  end
+
   private
   def find_project
     @project = Project.find(params[:project_id])

@@ -108,3 +108,26 @@ form {
     width: 655px;
   }
 }
+#actions {
+  border: 1px solid #DEDEDE;
+  border-left: none;
+  border-right: none;
+  margin-bottom: 10px;
+  overflow: hidden;
+  padding: 5px 0;
+
+  a {
+    margin-right: 15px;
+  }
+  p {
+    display: inline;
+    margin-left: 15px;
+  }
+  .left {
+    float: left;
+  }
+
+  .right {
+    float: right;
+  }
+}

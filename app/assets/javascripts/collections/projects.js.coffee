@@ -7,4 +7,3 @@ HQ.Collections.Projects = Backbone.Collection.extend
     return unless project
     
     project.issues.get(id)
-    

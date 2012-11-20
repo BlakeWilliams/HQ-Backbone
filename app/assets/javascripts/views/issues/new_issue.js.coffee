@@ -6,8 +6,6 @@ HQ.Views.NewIssue = Backbone.View.extend
     'click .cancel': 'cancel'
 
   initialize: ->
-    HQ.router.layout.sidebar.updateProject()
-    HQ.router.layout.sidebar.setChild()
     @model.on 'error', (model, response, options) =>
       @errors = JSON.parse(response.responseText)
       @render()

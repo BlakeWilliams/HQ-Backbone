@@ -16,6 +16,15 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def update
+    @project = Project.find(params[:id])
+    if @project.update_attributes params[:issue]
+      render 'show'
+    else
+      render json: @project.errors.messages.to_json, status: :unprocessable_entity
+    end
+  end
+
   def destroy
     Project.find(params[:id]).destroy
   end

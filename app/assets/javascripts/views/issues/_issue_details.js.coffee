@@ -4,6 +4,7 @@ class HQ.Views.IssueDetails extends Backbone.View
   events: ->
     'click .open': 'open'
     'click .close': 'close'
+    'click .delete': 'delete'
 
   initialize: ->
     @poll = setInterval =>
@@ -28,3 +29,10 @@ class HQ.Views.IssueDetails extends Backbone.View
     e.preventDefault()
     @model.set('status', 'open')
     @model.save()
+
+  delete: (e) ->
+    e.preventDefault()
+    if confirm("Are you sure you want to delete this issue?")
+      project = HQ.projects.get @model.get('project_id')
+      @model.destroy()
+      HQ.router.gotoProject(project)

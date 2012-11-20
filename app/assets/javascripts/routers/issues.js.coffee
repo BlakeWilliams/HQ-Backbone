@@ -10,6 +10,7 @@ HQ.Routers.Issues =
     @gotoIssues issues
 
   gotoNewIssue: (id) ->
+    @navigate "/projects/#{id}/issues/new"
     project = HQ.projects.get(id) || new HQ.Models.Project {id: id}
     project.fetch()
     issue = new HQ.Models.Issue project: project
@@ -18,7 +19,6 @@ HQ.Routers.Issues =
 
   newIssue: (id) ->
     @gotoNewIssue id
-  
 
   gotoIssue: (issue) ->
     view = new HQ.Views.Issue model: issue

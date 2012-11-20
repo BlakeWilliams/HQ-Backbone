@@ -7,15 +7,6 @@
 
 
 #issue {
-  #actions {
-    border: 1px solid #DEDEDE;
-    border-left: none;
-    border-right: none;
-    padding: 5px 0;
-    a {
-      margin-right: 15px;
-    }
-  }
 }
 
 .status {
@@ -24,7 +15,7 @@
   top: 0;
   position: absolute;
   width: 5px;
-
+  z-index: 5;
 
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;

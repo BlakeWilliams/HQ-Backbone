@@ -1,3 +1,20 @@
 // Place all the styles related to the projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#project {
+  .issue {
+    margin-bottom: 10px;
+    padding: 1px 15px;
+    position: relative;
+    h4 {
+      margin: 0;
+    }
+    p {
+      margin-bottom: 0;
+      margin-top: 5px;
+    }
+  }
+}
+
+.project-edit {
+}

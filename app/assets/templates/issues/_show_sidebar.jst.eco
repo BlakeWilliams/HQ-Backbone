@@ -1,4 +1,0 @@
-<div class="btn-group">
-  <a href="#" class="btn resolved <%= 'active' if @issue.resolved() %>">Resolved</a>
-  <a href="#" class="btn open <%= 'active' if @issue.open() %>">Open</a>
-</div>
