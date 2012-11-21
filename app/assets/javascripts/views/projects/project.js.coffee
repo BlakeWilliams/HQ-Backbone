@@ -5,6 +5,7 @@ HQ.Views.Project = Backbone.View.extend
     'click .issue-name a': 'gotoIssue'
     'click .new-issue': 'gotoNewIssue'
     'click .edit': 'toggleEdit'
+    'click .delete': 'delete'
     'click .cancel': 'cancelEdit'
     'submit #edit': 'save'
 
@@ -12,6 +13,11 @@ HQ.Views.Project = Backbone.View.extend
     @count = 0
     @editMode = false
     @model.on 'change', @render, this
+
+
+    @poll = setInterval =>
+      @model.fetch()
+    , 10000
   
   render: ->
     $(@el).html @template
@@ -46,3 +52,13 @@ HQ.Views.Project = Backbone.View.extend
     @model.save 
     @editMode = false
     @render()
+
+  delete: (e) ->
+    e.preventDefault()
+    if confirm("Are you sure you want to delete this project?")
+      @model.destroy()
+      HQ.projects.remove(@model)
+      HQ.router.gotoProjects()
+
+  leave: ->
+    clearInterval @poll

@@ -14,7 +14,7 @@
     <div class="left">
       <a href="#" class="new-issue">New Issue</a>
       <a href="#" class="edit">Edit Project</a>
-      <a href="#" class="">Delete Project</a>
+      <a href="#" class="delete">Delete Project</a>
     </div>
 
     <div class="right">

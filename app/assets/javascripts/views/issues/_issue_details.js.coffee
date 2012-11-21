@@ -15,9 +15,6 @@ class HQ.Views.IssueDetails extends Backbone.View
   render: ->
     @$el.html @template(issue: @model)
 
-  leave: ->
-    clearInterval @poll
-
   open: ->
 
   close: (e) ->
@@ -36,3 +33,6 @@ class HQ.Views.IssueDetails extends Backbone.View
       project = HQ.projects.get @model.get('project_id')
       @model.destroy()
       HQ.router.gotoProject(project)
+
+  leave: ->
+    clearInterval @poll

@@ -1,12 +1,12 @@
 HQ.Routers.Projects =
   gotoProjects: (projects) ->
     @navigate "/projects"
+    projects or= HQ.projects
     view = new HQ.Views.Projects collection: projects
     @swap view, projects
 
   projects: ->
     @gotoProjects HQ.projects
-
 
   gotoProject: (project) ->
     @navigate "/projects/#{project.get 'id'}"
