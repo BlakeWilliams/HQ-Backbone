@@ -1,0 +1,38 @@
+#login {
+  background: #fff;
+  height: 195px;
+  left: 50%;
+  margin-left: -125px;
+  margin-top: -195px;
+  position: absolute;
+  padding: 15px;
+  top: 50%;
+  width: 250px;
+
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+
+  box-shadow: 0 1px 4px #888;
+  -moz-box-shadow: 0 1px 4px #888;
+  -webkit-box-shadow: 0 1px 4px #888;
+  
+  #gravatar {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 10px;
+
+    height: 80px;
+    width: 80px;
+
+    box-shadow: 0 0px 4px #888;
+  }
+
+  input[type=text],
+  input[type=password] {
+    width: 238px;
+  }
+  input[type=submit] {
+    width: 250px;
+  }
+}

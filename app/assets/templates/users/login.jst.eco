@@ -1,0 +1,7 @@
+<form id="login">
+  <img src="<%= @url %>" id="gravatar" />
+  <input type="text" name="email" placeholder="Email" id="email"/>
+  <input type="password" name="password" placeholder="Password" id="password"/>
+  <input type="submit" id="login-button" class="btn " />
+  <div class="clear"></div>
+</form>

@@ -1,4 +1,7 @@
 HQ::Application.routes.draw do
+
+  post 'login', to: 'sessions#create'
+
   resources :projects do
     resources :issues
   end

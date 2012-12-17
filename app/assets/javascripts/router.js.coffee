@@ -16,8 +16,8 @@ class HQ.Router extends Backbone.Router
       HQ.projects = new HQ.Collection.Projects()
       HQ.projects.fetch()
 
-    @layout = new HQ.Views.Layout()
-    @sidebar = new HQ.Views.Sidebar collection: HQ.projects
+    @layout = HQ.Layout = new HQ.Views.Layout()
+    @sidebar = HQ.Sidebar = new HQ.Views.Sidebar collection: HQ.projects
     @layout.sidebar = @sidebar
 
     $('body').html @layout.render().el
@@ -27,7 +27,9 @@ class HQ.Router extends Backbone.Router
     @layout.child = child
     @layout.renderChild()
 
-    object.fetch()
+    child.enter() if child.enter
+
+    object.fetch() if object
 
     # Set project name here
     @sidebar.updateProject object
