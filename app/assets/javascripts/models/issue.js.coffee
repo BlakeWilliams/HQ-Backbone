@@ -1,4 +1,4 @@
-class HQ.Models.Issue extends Backbone.Model
+class HQ.Models.Issue extends HQ.Model
   initialize: (options) ->
     @set 'project_id', options.project.get('id') if options.project
     @set 'project', options.project if options.project

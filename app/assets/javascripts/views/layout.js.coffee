@@ -1,4 +1,4 @@
-class HQ.Views.Layout extends Backbone.View
+class HQ.Views.Layout extends HQ.View
   template: JST['layout']
 
   events:

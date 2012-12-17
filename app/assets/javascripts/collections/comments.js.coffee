@@ -1,4 +1,4 @@
-class HQ.Collections.Comments extends Backbone.Collection
+class HQ.Collections.Comments extends HQ.Collection
   model: HQ.Models.Comment
   url: '/comments'
 

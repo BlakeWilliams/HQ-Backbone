@@ -1,4 +1,4 @@
-class HQ.Views.Sidebar extends Backbone.View
+class HQ.Views.Sidebar extends HQ.View
   template: JST['sidebar']
 
   initialize: ->
@@ -11,7 +11,7 @@ class HQ.Views.Sidebar extends Backbone.View
   events:
     'click #project-select': 'toggleProjects'
     'click .sidebar-project a': 'gotoProject'
-    'click #actions a': 'goto'
+    'click h4 a': 'goto'
 
   render: ->
     $(@el).html(@template {

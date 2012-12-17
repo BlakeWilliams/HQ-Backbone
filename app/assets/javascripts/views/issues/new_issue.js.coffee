@@ -1,4 +1,4 @@
-HQ.Views.NewIssue = Backbone.View.extend
+HQ.Views.NewIssue = HQ.View.extend
   template: JST['issues/new']
 
   events:

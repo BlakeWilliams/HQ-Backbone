@@ -1,4 +1,4 @@
-HQ.Collections.Projects = Backbone.Collection.extend
+HQ.Collections.Projects = HQ.Collection.extend
   model: HQ.Models.Project
   url: '/projects'
 

@@ -1,4 +1,4 @@
-class HQ.Views.Issue extends Backbone.View
+class HQ.Views.Issue extends HQ.View
   template: JST['issues/show']
 
   initialize: ->

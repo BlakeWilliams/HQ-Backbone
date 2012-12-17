@@ -1,4 +1,4 @@
-class HQ.Views.CommentForm extends Backbone.View
+class HQ.Views.CommentForm extends HQ.View
   template: JST['issues/_comment_form']
 
   events:

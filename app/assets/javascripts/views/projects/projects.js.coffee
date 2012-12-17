@@ -1,4 +1,4 @@
-HQ.Views.Projects = Backbone.View.extend
+HQ.Views.Projects = HQ.View.extend
   template: JST['projects/projects']
 
   events: ->

@@ -7,7 +7,7 @@
   <% end %>
 </div>
 
-<div id="actions">
+<div id="sidebar-actions">
   <h4><i class="icon-cloud"></i> <a href="projects" class="projects">Projects</a></h4>
   <h4><i class="icon-cogs"></i> <a href="issues">Issues</a></h4>
 </div>

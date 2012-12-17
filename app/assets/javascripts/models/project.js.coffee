@@ -1,4 +1,4 @@
-class HQ.Models.Project extends Backbone.Model
+class HQ.Models.Project extends HQ.Model
   initialize: ->
     @issues = new HQ.Collections.Issues()
     @on 'change', @updateIssues

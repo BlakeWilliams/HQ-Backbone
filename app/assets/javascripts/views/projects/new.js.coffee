@@ -1,4 +1,4 @@
-class HQ.Views.ProjectNew extends Backbone.View
+class HQ.Views.ProjectNew extends HQ.View
   template: JST['projects/new']
 
   events:

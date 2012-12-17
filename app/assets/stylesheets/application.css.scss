@@ -108,6 +108,15 @@ form {
     width: 655px;
   }
 }
+#sidebar-actions {
+  overflow: hidden;
+  padding: 5px 0;
+
+  h4 {
+    margin-top: 0;
+  }
+}
+
 #actions {
   border: 1px solid #DEDEDE;
   border-left: none;

@@ -6,6 +6,7 @@ class HQ.Router extends Backbone.Router
     'projects/:id': 'project'
     'projects/:project_id/issues/new': 'newIssue'
     'projects/:project_id/issues/:id': 'issue'
+    'login': 'login'
 
 
     'issues': 'issues'
@@ -33,3 +34,4 @@ class HQ.Router extends Backbone.Router
 
 _.extend HQ.Router.prototype, HQ.Routers.Projects
 _.extend HQ.Router.prototype, HQ.Routers.Issues
+_.extend HQ.Router.prototype, HQ.Routers.Users
