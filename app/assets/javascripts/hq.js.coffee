@@ -1,8 +1,11 @@
+$(document).ajaxError (e, xhr, options) ->
+  if xhr.responseText == "unauthenticated"
+    HQ.router.gotoLogin()
+
 HQ.View = Backbone.View.extend
   _destroy: ->
     @leave() if @leave
     @dispose()
-
 
 HQ.Model = Backbone.Model.extend
   constructor: (attributes, options) ->

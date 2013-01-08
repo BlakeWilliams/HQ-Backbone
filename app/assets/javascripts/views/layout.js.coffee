@@ -23,7 +23,7 @@ class HQ.Views.Layout extends HQ.View
     @sidebar.setElement(@$('#sidebar')).render()
 
   toggleLayout: (option) ->
-    if option
+    if option != undefined
       @showLayout = option
     else
       @showLayout = !@showLayout

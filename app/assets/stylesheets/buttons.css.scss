@@ -51,6 +51,9 @@
   }
 }
 
+.btn-black {
+  @include button(#444);
+}
 .btn-red   { @include button(#da4f49); }
 .btn-green { @include button(#40b940); }
 .btn-blue  { @include button(#0074cc); }

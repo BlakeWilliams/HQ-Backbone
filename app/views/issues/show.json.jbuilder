@@ -2,6 +2,7 @@ json.id @issue.id
 json.name @issue.name
 json.description @issue.description
 json.status @issue.status
+json.due @issue.due
 
 json.project_id @issue.project_id
 

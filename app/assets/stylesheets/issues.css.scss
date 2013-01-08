@@ -2,11 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .resolved, .open {
-  width: 89px;
+  float: left;
 }
 
-
-#issue {
+.due {
+  margin-top: 4px;
+  float: right;
 }
 
 .status {
@@ -24,5 +25,67 @@
   }
   &.resolved {
     background: #c7ffbe;
+  }
+}
+
+#issue {
+  h1 {
+    margin-top: 0;
+  }
+}
+
+.issue-details {
+  margin-top: 4px;
+  margin-bottom: 3px;
+  p {
+    color: #999;
+    display: inline;
+    margin-right: 10px;
+  }
+}
+
+#new-issue-form {
+  color: #fff;
+  padding: 30px 15px;
+  background: #333;
+  border: 1px solid #bebebe;
+
+  border-radius: 5px;
+
+  input, textarea {
+    border: 1px solid #333333;
+  }
+
+  input {
+    padding: 8px;
+    font-size: 14px;
+    width: 500px 
+  }
+  textarea {
+    width: 508px 
+  }
+  .control-label {
+    text-align: left;
+    width: 80px;
+  }
+  .controls {
+    margin-left: 120px;
+  }
+}
+.new-issue {
+  float: left;
+}
+
+.issue-actions {
+  float: right;
+  margin-top: 3px;
+  width: 500px;
+  p {
+    &.current {
+      border-bottom: 2px solid #777;
+    }
+    span {
+      font-weight: bold;
+    }
   }
 }

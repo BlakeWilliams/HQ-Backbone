@@ -1,0 +1,9 @@
+<a class="btn-black new-issue">New Issue</a>
+
+<div class="right">
+  <p class="action <%= 'current' if @filter == "all" %>" data-name="all">All <span><%= @project.issues.length %></span></p>
+  <p class="action <%= 'current' if @filter == "open" %>" data-name="open">Open <span><%= @project.issues.open().length %></span></p>
+  <p class="action <%= 'current' if @filter == "resolved" %>" data-name="resolved">Resolved <span><%= @project.issues.resolved().length %></span></p>
+  <p class="action <%= 'current' if @filter == "today" %>" data-name="today">Due Today <span><%= @project.issues.today().length %></span></p>
+  <p class="action <%= 'current' if @filter == "overdue" %>" data-name="overdue">Overdue <span><%= @project.issues.overdue().length %></span></p>
+</div>

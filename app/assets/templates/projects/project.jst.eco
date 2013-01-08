@@ -1,43 +1,13 @@
 <div id="project">
-  <% if @editMode: %>
-    <form id="edit">
-      <input type="text" id="name" value="<%= @project.get 'name' %>"/>
-      <textarea id="description"><%= @project.get 'description' %></textarea>
-      <input type="submit" class="btn cancel" value="Cancel"/>
-      <input type="submit" class="btn btn-blue" value="Save Project"/>
-    </form>
-  <% else: %>
-    <h1><%= @project.get 'name' %></h1>
-    <p><%= @project.get 'description' %></p>
-  <% end %>
-  <div id="actions">
-    <div class="left">
-      <a href="#" class="new-issue">New Issue</a>
-      <a href="#" class="edit">Edit Project</a>
-      <a href="#" class="delete">Delete Project</a>
-    </div>
-
-    <div class="right">
-      <p><%= @project.issues.length %> issues</p>
-      <p><%= @project.issues.open().length %> open</p>
-      <p><%= @project.issues.resolved().length %> resolved</p>
-    </div>
+  <div id="project-details">
   </div>
 
-  <h2>Issues</h2>
+  <div id="actions">
+  </div>
+
+  <div id="new-issue">
+  </div>
+
   <div id="issues">
-  <% if !@project.issues.isLoaded: %>
-    <p>Loading issues...</p>
-  <% else if @project.issues.length == 0: %>
-    <p>No issues found for this project.</p>
-  <% else: %>
-    <% for issue in @project.issues.models: %>
-      <div class="issue">
-        <h4 class="issue-name"><a href="<%= issue.url() %>" data-id="<%= issue.get('id') %>"><%= issue.get 'name' %></a> <small><%= issue.get 'status' %></small></h5>
-        <p><%= issue.get 'description' %></p>
-        <div class="status <%= if issue.open() then "open" else "resolved" %>"></div>
-      </div>
-    <% end %>
-  <% end %>
   </div>
 </div>

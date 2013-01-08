@@ -3,24 +3,38 @@
 //= require_self
 //= require_tree .
 
+html { height: 100%; }
 body {
   background: #f1f1f1;
+  height: 100%;
+  & > div {
+    height: 100%;
+  }
 }
 
 #container {
-  margin: 0 auto;
+  padding-left: 230px;
   width: 960px;
+  height: 100%;
   header {
     h1 {
-      color: #333;
+      color: #fff;
       cursor: pointer;
+      font-size: 24px;
     }
   }
 }
 
+#left {
+  background: #222;
+  left: 0;
+  position: fixed;
+  padding: 0 15px;
+  height: 100%;
+  width: 200px;
+}
+
 #sidebar {
-  float: left;
-  width: 230px;
   h2 {
     margin-bottom: 10px;
     line-height: 1;
@@ -30,17 +44,20 @@ body {
     list-style: none;
   }
   a {
-    color: #333333;
+    color: #dfdfdf;
+    &:hover {
+      color: #fff;
+      text-decoration: none;
+    }
   }
 }
 
 #outlet {
-  background: #fff;
-  border: 1px solid #e5e5e5;
-  float: right;
+  float: left;
+  height: 100%;
   padding: 10px 20px;
   position: relative;
-  width: 670px;
+  width: 100%;
 
   border-radius: 3px;
   -moz-border-radius: 3px;
@@ -49,42 +66,53 @@ body {
 }
 
 #project-select {
-  background: #222;
+  background: #333;
   color: #fafafa;
   cursor: pointer;
   font-size: 16px;
   line-height: 1;
+  margin-left: -15px;
   margin-top: 0;
-  padding: 7px 15px 5px 15px;
+  padding: 12px 15px 11px 15px;
   position: relative;
-  z-index: 15;
+  width: 200px;
 
-  border-radius: 4px;
-
-  &.show {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-  }
   i {
     color: #fff;
+    float: right;
     margin-right: 10px;
+  }
+  &.show {
+    border-bottom: 1px solid #000002;
   }
 }
 
 #project-list {
   color: #fff;
   display: none;
-  background: #444;
-  margin-top: -12px;
+  background: #272727;
+  border-bottom: 1px solid #2D2E30;
+  margin-left: -15px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  padding: 0;
   z-index: 10;
+
+  width: 230px;
 
 
   border-radius: 4px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   .sidebar-project {
-    padding: 5px 15px 5px 15px;
-    a { color: #fff; }
+    padding: 8px 15px 6px 15px;
+    border-top: 1px solid #2D2E30;
+    border-bottom: 1px solid #000002;
+    a {
+      color: #ddd;
+    }
+    &:last-child {
+    }
   }
 
   &.show {
@@ -118,10 +146,7 @@ form {
 }
 
 #actions {
-  border: 1px solid #DEDEDE;
-  border-left: none;
-  border-right: none;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   overflow: hidden;
   padding: 5px 0;
 
@@ -138,5 +163,15 @@ form {
 
   .right {
     float: right;
+    margin-top: 3px;
+    p {
+      &.current {
+        border-bottom: 2px solid #777;
+      }
+      span {
+        font-weight: bold;
+      }
+    }
   }
 }
+.clear { clear: both; }

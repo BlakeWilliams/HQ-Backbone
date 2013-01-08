@@ -2,8 +2,10 @@ HQ.Views.Login = HQ.View.extend
   template: JST['users/login']
 
   initialize: ->
-    HQ.Layout.toggleLayout false
     @url = 'http://www.gravatar.com/avatar/.jpg?s=80'
+    @render()
+
+  enter: -> HQ.Layout.toggleLayout(false)
 
   events:
     'keyup #email':  'setGravatar'
@@ -38,3 +40,4 @@ HQ.Views.Login = HQ.View.extend
 
    leave: ->
      HQ.Layout.toggleLayout true
+     console.log 'leave'

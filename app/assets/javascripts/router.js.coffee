@@ -13,7 +13,7 @@ class HQ.Router extends Backbone.Router
 
   initialize: ->
     if !HQ.projects
-      HQ.projects = new HQ.Collection.Projects()
+      HQ.projects = new HQ.Collections.Projects()
       HQ.projects.fetch()
 
     @layout = HQ.Layout = new HQ.Views.Layout()
@@ -22,7 +22,7 @@ class HQ.Router extends Backbone.Router
 
     $('body').html @layout.render().el
 
-  swap: (child, object, projectName) =>
+  swap: (child, object, options) =>
     @layout.child._destroy() if @layout.child
     @layout.child = child
     @layout.renderChild()

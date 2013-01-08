@@ -1,4 +1,4 @@
-<h1 id="project-select" class="<%= "show" if @showProjects %>"><i class="icon-reorder"></i><span><%= @projectName %></span></h1>
+<h1 id="project-select" class="<%= "show" if @showProjects %>"><span><%= @projectName %></span><i class="icon-reorder"></i></h1>
 <div id="project-list" class="<%= "show" if @showProjects && @projects.models.length != 0 %>">
   <% for project in @projects.models: %>
     <div class="sidebar-project">
@@ -8,6 +8,6 @@
 </div>
 
 <div id="sidebar-actions">
-  <h4><i class="icon-cloud"></i> <a href="projects" class="projects">Projects</a></h4>
-  <h4><i class="icon-cogs"></i> <a href="issues">Issues</a></h4>
+  <h4><a href="projects" class="projects"><i class="icon-cloud"></i> Projects</a></h4>
+  <h4><a href="issues"><i class="icon-cogs"></i> Issues</a></h4>
 </div>

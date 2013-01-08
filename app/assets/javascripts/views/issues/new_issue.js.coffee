@@ -12,6 +12,10 @@ HQ.Views.NewIssue = HQ.View.extend
 
   render: ->
     $(@el).html @template(issue: @model)
+    $('#date').datepicker
+      constrainInput: true
+      dateFormat: 'mm/dd/yy'
+      minDate: 0
     @renderErrors()
 
   renderErrors: ->
@@ -22,18 +26,22 @@ HQ.Views.NewIssue = HQ.View.extend
     e.preventDefault()
     attributes = 
       name: $('#name').val()
+      due: $('#date').val()
       description: $('#description').val()
+
+    console.log attributes
+
     @$el.find('.save').attr 'disabled', 'true'
     @model.save attributes, 
       success: =>
-        HQ.projects.add @model
-        console.log @model.url
-        HQ.router.navigate @model.url(), true
+        @model.project.issues.add @model
+        @model.project.trigger('change')
+        @cancel()
       error: =>
         @$el.find('.save').removeAttr 'disabled'
 
 
   cancel: (e) ->
-    e.preventDefault()
-    HQ.router.navigate $(e.currentTarget).attr('href'), true
-
+    e.preventDefault() if e
+    @_destroy()
+    @$el.empty()

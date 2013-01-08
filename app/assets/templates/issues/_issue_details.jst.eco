@@ -1,16 +1,15 @@
 <h1><%= @issue.get 'name' %></h1>
 <p><%= @issue.get 'description' %></p>
 
-<div id="actions">
-  <% if @issue.open(): %>
-  <a href="#" class="close">Close Issue</a>
-  <% else: %>
-  <a href="#" class="open">Open Issue</a>
-  <% end %>
-  <a href="#" class="edit">Edit Issue</a>
-  <a href="#" class="delete">Delete Issue</a>
-</div>
+<% if @issue.open(): %>
+  <a href="#" class="btn-black close">Close</a>
+<% else: %>
+  <a href="#" class="btn-black open">Open</a>
+<% end %>
 
+<p class="due"><i class="icon-calendar"></i> <%= @issue.get('due') %></p>
+
+<div class="clear"></div>
 <h2>Discussion</h2>
 <% if !@issue.comments.isLoaded: %>
   <p>Loading Comments.</p>

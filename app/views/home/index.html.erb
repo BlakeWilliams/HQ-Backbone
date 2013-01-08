@@ -1,3 +1,5 @@
 <script>
-  HQ.projects = new HQ.Collections.Projects(JSON.parse("<%= j @projects.html_safe %>"))
+  <% if logged_in? %>
+    HQ.projects = new HQ.Collections.Projects(JSON.parse("<%= j @projects.html_safe %>"))
+  <% end %>
 </script>
