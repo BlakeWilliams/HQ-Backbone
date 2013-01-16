@@ -20,6 +20,7 @@ class IssuesController < ApplicationController
 
   def update
     @issue = Issue.find(params[:id])
+    params[:issue][:due] = Date.today if params[:issue][:due] == "Today"
     if @issue.update_attributes params[:issue]
       render 'show'
     else

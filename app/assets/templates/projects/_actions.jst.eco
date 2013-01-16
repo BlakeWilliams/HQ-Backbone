@@ -1,9 +1,18 @@
 <a class="btn-black new-issue">New Issue</a>
 
 <div class="right">
-  <p class="action <%= 'current' if @filter == "all" %>" data-name="all">All <span><%= @project.issues.length %></span></p>
-  <p class="action <%= 'current' if @filter == "open" %>" data-name="open">Open <span><%= @project.issues.open().length %></span></p>
-  <p class="action <%= 'current' if @filter == "resolved" %>" data-name="resolved">Resolved <span><%= @project.issues.resolved().length %></span></p>
-  <p class="action <%= 'current' if @filter == "today" %>" data-name="today">Due Today <span><%= @project.issues.today().length %></span></p>
-  <p class="action <%= 'current' if @filter == "overdue" %>" data-name="overdue">Overdue <span><%= @project.issues.overdue().length %></span></p>
+  <p class="action all      <%= 'current' if @filter == "all" %>" data-name="all">All <span><%= @project.issues.length %></span></p>
+  <p class="action open     <%= 'current' if @filter == "open" %>" data-name="open">Open <span><%= @project.issues.open().length %></span></p>
+  <p class="action resolved <%= 'current' if @filter == "resolved" %>" data-name="resolved">Resolved <span><%= @project.issues.resolved().length %></span></p>
+  <p class="action today    <%= 'current' if @filter == "today" %>" data-name="today">Due Today <span><%= @project.issues.today().length %></span></p>
+  <p class="action overdue  <%= 'current' if @filter == "overdue" %>" data-name="overdue">Overdue <span><%= @project.issues.overdue().length %></span></p>
 </div>
+
+<!--
+<div id="issue-progress">
+  <div id="open" style="width: <%= ((@project.issues.open().length - @project.issues.overdue().length - @project.issues.today().length) / @total) * 100 %>%;"></div>
+  <div id="resolved" style="width: <%= (@project.issues.resolved().length / @total) * 100 %>%;"></div>
+  <div id="today" style="width: <%= (@project.issues.today().length / @total) * 100 %>%;"></div>
+  <div id="overdue" style="width: <%= (@project.issues.overdue().length / @total) * 100 %>%;"></div>
+</div>
+-->

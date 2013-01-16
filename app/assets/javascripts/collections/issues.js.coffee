@@ -3,16 +3,15 @@ class HQ.Collections.Issues extends HQ.Collection
   url: '/issues'
 
   comparator: (a, b) ->
-    if a.date() == b.date()
+    if a.date().getTime() == b.date().getTime()
       if a.id > b.id
         1
       else
         -1
-    else if a.date() < b.date()
+    else if a.date().getTime() < b.date().getTime()
       1
-    else if a.date() > b.date()
+    else if a.date().getTime() > b.date().getTime()
       -1
-
 
   open: ->
     @where status: 'open'
@@ -21,15 +20,17 @@ class HQ.Collections.Issues extends HQ.Collection
     @where status: 'resolved'
 
   today: ->
-    #date = new Date()
-    #console.log "#{date.getMonth() + 1}/#{date.getDate()}/#{date.getFullYear()}"
-    #@where due: "#{date.getMonth() + 1}/#{date.getDate()}/#{date.getFullYear()}"
-    @where due: "Today"
+    date = new Date()
+    month = date.getMonth() + 1
+    month = '0' + month.toString() if month.toString().length == 1
+    #console.log "#{month}/#{date.getDate()}/#{date.getFullYear()}"
+    @where due: "#{month}/#{date.getDate()}/#{date.getFullYear()}", status: 'open'
 
   overdue: ->
     date = new Date()
     @filter (issue) ->
-      (issue.date() < date) && issue.get('status') != 'resolved'
+      date.setDate(new Date().getDate() - 1);
+      (issue.date().getTime() < date.getTime()) && issue.get('status') != 'resolved'
 
 
   filtered: (filter) ->

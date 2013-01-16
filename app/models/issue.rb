@@ -15,8 +15,6 @@ class Issue < ActiveRecord::Base
 
   def due
     date = read_attribute(:due)
-    return "Today" if date == Date.today
-    return "Tomorrow" if date == Date.tomorrow
     date.strftime('%m/%d/%Y')
   end
 end

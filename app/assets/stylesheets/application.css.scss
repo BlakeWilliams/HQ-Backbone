@@ -157,15 +157,24 @@ form {
     display: inline;
     margin-left: 15px;
   }
+  .action {
+    color: #888;
+    cursor: pointer;
+
+    &.resolved span { color: #51A451;}
+    &.today span { color: #F89406;}
+    &.overdue span { color: #D14741;}
+  }
   .left {
     float: left;
   }
 
   .right {
     float: right;
-    margin-top: 3px;
+    margin-top: 4px;
     p {
       &.current {
+        color: #333;
         border-bottom: 2px solid #777;
       }
       span {

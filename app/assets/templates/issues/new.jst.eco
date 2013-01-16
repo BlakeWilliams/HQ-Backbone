@@ -1,23 +1,14 @@
-<form class="form-horizontal" id="new-issue-form">
-  <div class="field control-group">
-    <label for="name" class="control-label">Name: </label>
-    <div class="controls">
-      <input type="text" id="name" name="name" value="<%= @issue.get('name') %>"/>
-    </div>
+<form id="new-issue-form">
+  <div class="field left">
+    <input type="text" id="name" name="name" value="<%= @issue.get('name') %>" placeholder='Issue Name'/>
   </div>
 
-  <div class="field control-group">
-    <label for="due" class="control-label">Due Date: </label>
-    <div class="controls">
-      <input type="text" id="date" name="due" value="<%= @issue.get('date') %>"/>
-    </div>
+  <div class="field left">
+    <input type="text" id="date" name="due" value="<%= @issue.get('date') %>" placeholder='Issue Date'/>
   </div>
 
-  <div class="field control-group">
-    <label for="description" class="control-label">Description: </label>
-    <div class="controls">
-      <textarea id="description" name="description"><%= @issue.get('description') %></textarea>
-    </div>
+  <div class="field">
+    <textarea id="description" name="description" placeholder='Issue Description'><%= @issue.get('description') %></textarea>
   </div>
 
   <div class="actions controls">

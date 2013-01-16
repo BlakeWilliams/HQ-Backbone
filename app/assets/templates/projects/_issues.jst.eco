@@ -3,16 +3,22 @@
 <% else if @project.issues.length == 0: %>
   <p>No issues found for this project.</p>
 <% else: %>
-  <% for issue in @project.issues.filtered(@filter): %>
-    <div class="issue">
-      <h4 class="issue-name"><a href="<%= issue.url() %>" data-id="<%= issue.get('id') %>"><%= issue.get 'name' %></a> </h4>
-      <p class="issue-description"><%= issue.get 'description' %></p>
-      <div class="issue-details">
-        <p><i class="icon-calendar"></i> <%= issue.get('due') %></p>
-        <p><i class="icon-dashboard"></i> <%= issue.get('status').charAt(0).toUpperCase() + issue.get('status').slice(1) %></p>
-        <p><i class="icon-comments"></i> <%= issue.comments.length %> Comment<%= "s" if issue.comments.length != 1 %></p>
-      </div>
-      <div class="status <%= if issue.open() then "open" else "resolved" %>"></div>
-    </div>
-  <% end %>
+  <div id="issue-list">
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Issue Name</th>
+        <th>Due</th>
+      </tr>
+    </thead>
+    <% for issue in @project.issues.filtered(@filter): %>
+      <tr>
+        <td><i class="toggle icon-check<%= '-empty' if issue.open() %>"></i></td>
+        <td><%= issue.get 'name' %></td>
+        <td><%= issue.get 'due' %></td>
+      </td>
+    <% end %>
+  </table>
 <% end %>

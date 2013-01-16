@@ -4,6 +4,7 @@ class HQ.Models.Project extends HQ.Model
     @on 'change', @updateIssues
     @on 'sync', => @issues.trigger('sync')
     @issues.on 'loaded', => @trigger('change')
+    @issues.on 'loaded', => @trigger('issuesLoaded')
 
   url: ->
     base = "/projects"

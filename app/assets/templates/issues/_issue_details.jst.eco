@@ -7,7 +7,7 @@
   <a href="#" class="btn-black open">Open</a>
 <% end %>
 
-<p class="due"><i class="icon-calendar"></i> <%= @issue.get('due') %></p>
+<p class="due"><%= @issue.get('due') %></p>
 
 <div class="clear"></div>
 <h2>Discussion</h2>

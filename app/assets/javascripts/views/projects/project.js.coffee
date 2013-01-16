@@ -6,12 +6,12 @@ HQ.Views.Project = HQ.View.extend
   newIssueTemplate: JST['issues/new']
 
   events:
-    'click .issue-name a': 'gotoIssue'
     'click .new-issue': 'newIssue'
     'click .action': 'changeFilter'
     'click .delete': 'delete'
 
   initialize: (options) ->
+    @issueViews = []
     @filter = 'open'
     @model.on 'change', @renderChildren, this
 
@@ -34,6 +34,7 @@ HQ.Views.Project = HQ.View.extend
     $(@el).find('#actions').html @actionsTemplate
       filter: @filter
       project: @model
+      total: @model.issues.length
 
     @renderIssues()
 
@@ -43,10 +44,17 @@ HQ.Views.Project = HQ.View.extend
       filter: @filter
       project: @model
 
-  gotoIssue: (e) ->
-    e.preventDefault() 
-    issueID = $(e.currentTarget).data('id')
-    HQ.router.gotoIssue @model.issues.get(issueID)
+    @cleanUpIssues()
+
+    for issue in @model.issues.filtered(@filter)
+      view = new HQ.Views.ProjectIssue(model: issue)
+      view.parent = this
+      @issueViews.push(view)
+      $(@el).find('#issue-list').append view.render().el
+
+  cleanUpIssues: ->
+    for view in @issueViews
+      view._destroy()
 
   newIssue: (e) ->
     e.preventDefault()
@@ -80,7 +88,6 @@ HQ.Views.Project = HQ.View.extend
     e.preventDefault()
     @filter = $(e.currentTarget).data('name')
     @renderChildren()
-
 
   leave: ->
     clearInterval @poll

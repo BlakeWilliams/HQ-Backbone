@@ -32,6 +32,24 @@ class HQ.Models.Issue extends HQ.Model
   open: ->
     @get('status') == "open"
 
+  today: ->
+    date = new Date()
+    month = date.getMonth() + 1
+    month = '0' + month.toString() if month.toString().length == 1
+    "#{month}/#{date.getDate()}/#{date.getFullYear()}" == @get('due')
+
+  overdue: ->
+    date = new Date()
+    @date().getTime() < date.getTime() && @get('status') != 'resolved'
+
+
   setStatus: (status) ->
     @set 'status', status
+    @save()
+
+  toggleStatus: ->
+    if @resolved()
+      @set 'status', 'open'
+    else
+      @set 'status', 'resolved'
     @save()
