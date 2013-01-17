@@ -5,7 +5,7 @@ $(document).ajaxError (e, xhr, options) ->
 HQ.View = Backbone.View.extend
   _destroy: ->
     @leave() if @leave
-    @dispose()
+    @unbind()
 
 HQ.Model = Backbone.Model.extend
   constructor: (attributes, options) ->

@@ -1,19 +1,16 @@
 HQ.Views.Project = HQ.View.extend
   template: JST['projects/project']
-  actionsTemplate: JST['projects/_actions']
   issuesTemplate: JST['projects/_issues']
-  detailsTemplate: JST['projects/_details']
   newIssueTemplate: JST['issues/new']
 
   events:
     'click .new-issue': 'newIssue'
-    'click .action': 'changeFilter'
     'click .delete': 'delete'
 
   initialize: (options) ->
     @issueViews = []
     @filter = 'open'
-    @model.on 'change', @renderChildren, this
+    @model.on 'change', @renderIssues, this
 
     @poll = setInterval =>
       @model.fetch()
@@ -22,21 +19,19 @@ HQ.Views.Project = HQ.View.extend
   render: ->
     $(@el).html @template
       project: @model
-      editMode: @editMode
 
-    @renderChildren()
+    @detailView = new HQ.Views.ProjectDetails 
+      el: $(@el).find('#project-details')
+      model: @model
+    @detailView.render()
+
+    @actionsView = new HQ.Views.ProjectActions
+      el: $(@el).find('#actions')
+      model: @model
+    @actionsView.parent = this
+    @actionsView.render()
+
     this
-
-  renderChildren: ->
-    $(@el).find('#project-details').html @detailsTemplate
-      project: @model
-
-    $(@el).find('#actions').html @actionsTemplate
-      filter: @filter
-      project: @model
-      total: @model.issues.length
-
-    @renderIssues()
 
 
   renderIssues: ->
@@ -62,20 +57,7 @@ HQ.Views.Project = HQ.View.extend
     view = new HQ.Views.NewIssue
       model: issue
       el: $(@el).find('#new-issue')
-
     view.render()
-
-  save: (e) ->
-    e.preventDefault()
-
-    @model.save 
-      name: $('#name').val()
-      description: $('#description').val()
-    , 
-      patch: true
-
-    @editMode = false
-    @render()
 
   delete: (e) ->
     e.preventDefault()
@@ -83,11 +65,6 @@ HQ.Views.Project = HQ.View.extend
       @model.destroy()
       HQ.projects.remove(@model)
       HQ.router.gotoProjects()
-
-  changeFilter: (e) ->
-    e.preventDefault()
-    @filter = $(e.currentTarget).data('name')
-    @renderChildren()
 
   leave: ->
     clearInterval @poll

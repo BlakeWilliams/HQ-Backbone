@@ -3,9 +3,13 @@
 //= require_self
 //= require_tree .
 
+.hidden {
+  display: none;
+}
+
 html { height: 100%; }
 body {
-  background: #f1f1f1;
+  background: #fff;
   height: 100%;
   & > div {
     height: 100%;
@@ -15,7 +19,6 @@ body {
 #container {
   padding-left: 230px;
   width: 960px;
-  height: 100%;
   header {
     h1 {
       color: #fff;
@@ -26,6 +29,7 @@ body {
 }
 
 #left {
+  border-right: solid 8px #eee;
   background: #222;
   left: 0;
   position: fixed;
@@ -39,10 +43,7 @@ body {
     margin-bottom: 10px;
     line-height: 1;
   }
-  ul {
-    margin: 0;
-    list-style: none;
-  }
+
   a {
     color: #dfdfdf;
     &:hover {
@@ -120,14 +121,7 @@ body {
   }
 }
 
-h3 {
-  i {
-    font-size: 15px;
-    vertical-align: middle;
-  }
-}
 form {
-  margin-top: 15px;
   input {
     width: 655px;
   }
@@ -135,52 +129,34 @@ form {
     height: 90px;
     width: 655px;
   }
-}
-#sidebar-actions {
-  overflow: hidden;
-  padding: 5px 0;
+  &.full {
+    background: #e1e1e1;
+    padding: 20px;
+    border: 1px solid #d7d7d7;
+    overflow: hidden;
 
-  h4 {
-    margin-top: 0;
-  }
-}
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
 
-#actions {
-  margin-bottom: 15px;
-  overflow: hidden;
-  padding: 5px 0;
+    .fields {
+      margin-right: 10px;
+    }
 
-  a {
-    margin-right: 15px;
-  }
-  p {
-    display: inline;
-    margin-left: 15px;
-  }
-  .action {
-    color: #888;
-    cursor: pointer;
-
-    &.resolved span { color: #51A451;}
-    &.today span { color: #F89406;}
-    &.overdue span { color: #D14741;}
-  }
-  .left {
-    float: left;
-  }
-
-  .right {
-    float: right;
-    margin-top: 4px;
-    p {
-      &.current {
-        color: #333;
-        border-bottom: 2px solid #777;
-      }
-      span {
-        font-weight: bold;
-      }
+    input[type=text],
+    input[type=password] {
+      width: 100%;
+    }
+    textarea {
+      width: 100%;
+    }
+    .actions {
+      float: right;
+      margin-right: -10px;
     }
   }
 }
 .clear { clear: both; }
+
+.left {float: left; }
+.right {float: right; }

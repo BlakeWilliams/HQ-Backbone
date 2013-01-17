@@ -1,11 +1,11 @@
-<a class="btn-black new-issue">New Issue</a>
+<a class="assignee-filter btn">Everyone's Issues <i class="icon-caret-down"></i></a>
 
 <div class="right">
-  <p class="action all      <%= 'current' if @filter == "all" %>" data-name="all">All <span><%= @project.issues.length %></span></p>
-  <p class="action open     <%= 'current' if @filter == "open" %>" data-name="open">Open <span><%= @project.issues.open().length %></span></p>
-  <p class="action resolved <%= 'current' if @filter == "resolved" %>" data-name="resolved">Resolved <span><%= @project.issues.resolved().length %></span></p>
-  <p class="action today    <%= 'current' if @filter == "today" %>" data-name="today">Due Today <span><%= @project.issues.today().length %></span></p>
-  <p class="action overdue  <%= 'current' if @filter == "overdue" %>" data-name="overdue">Overdue <span><%= @project.issues.overdue().length %></span></p>
+  <a class="btn action all      <%= 'current red' if @filter == "all" %>" data-name="all">All <span><%= @project.issues.length %></span></a>
+  <a class="btn action open     <%= 'current red' if @filter == "open" %>" data-name="open">Open <span><%= @project.issues.open().length %></span></a>
+  <a class="btn action resolved <%= 'current red' if @filter == "resolved" %>" data-name="resolved">Resolved <span><%= @project.issues.resolved().length %></span></a>
+  <a class="btn action today    <%= 'current red' if @filter == "today" %>" data-name="today">Due Today <span><%= @project.issues.today().length %></span></a>
+  <a class="btn action overdue  <%= 'current red' if @filter == "overdue" %>" data-name="overdue">Overdue <span><%= @project.issues.overdue().length %></span></a>
 </div>
 
 <!--

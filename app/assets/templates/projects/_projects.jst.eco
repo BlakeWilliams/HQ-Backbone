@@ -1,0 +1,4 @@
+<% for project in @projects.models: %>
+  <h2><a href="#projects/<%= project.get('id') %>"><%= project.get('name') %></a></h2>
+  <p><%= project.get('description') %></p>
+<% end %>

@@ -1,4 +1,15 @@
-<% for project in @projects.models: %>
-  <h1><a href="/projects/<%= project.get('id') %>"><%= project.get('name') %></a></h1>
-  <p><%= project.get('description') %></p>
-<% end %>
+<div id="projects-header" class="header">
+  <div class="left">
+    <h1>Your Projects</h1>
+  </div>
+  <div class="right">
+    <a class='btn-black' id="new-project-btn">New Project</a>
+  </div>
+  <div class="clear"></div>
+</div>
+
+<div id="new-project">
+</div>
+
+<div id="projects">
+</div>

@@ -1,11 +1,9 @@
-<% if @editMode: %>
-  <form id="edit">
-    <input type="text" id="name" value="<%= @project.get 'name' %>"/>
-    <textarea id="description"><%= @project.get 'description' %></textarea>
-    <input type="submit" class="btn cancel" value="Cancel"/>
-    <input type="submit" class="btn btn-blue" value="Save Project"/>
-  </form>
-<% else: %>
-  <h1><%= @project.get 'name' %></h1>
-  <p><%= @project.get 'description' %></p>
-<% end %>
+<div class="project-top">
+  <% if @editTitle == true: %>
+    <input type="text" class='title-input' value="<%= @project.get 'name' %>"/>
+  <% else: %>
+    <h1 class="title"><%= @project.get 'name' %></h1>
+    <a class="options"><i class="icon-cog"></i></a>
+  <% end %>
+</div>
+<p><%= @project.get 'description' %></p>

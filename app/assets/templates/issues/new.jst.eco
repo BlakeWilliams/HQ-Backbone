@@ -1,18 +1,20 @@
-<form id="new-issue-form">
-  <div class="field left">
-    <input type="text" id="name" name="name" value="<%= @issue.get('name') %>" placeholder='Issue Name'/>
-  </div>
+<form class="full">
+  <div class="fields">
+    <div class="field">
+      <input type="text" id="name" name="name" value="<%= @issue.get('name') %>" placeholder='Issue Name'/>
+    </div>
 
-  <div class="field left">
-    <input type="text" id="date" name="due" value="<%= @issue.get('date') %>" placeholder='Issue Date'/>
-  </div>
+    <div class="field">
+      <input type="text" id="date" name="due" value="<%= @issue.get('date') %>" placeholder='Issue Date'/>
+    </div>
 
-  <div class="field">
-    <textarea id="description" name="description" placeholder='Issue Description'><%= @issue.get('description') %></textarea>
-  </div>
+    <div class="field">
+      <textarea id="description" name="description" placeholder='Issue Description'><%= @issue.get('description') %></textarea>
+    </div>
 
-  <div class="actions controls">
-    <a class="btn cancel">Cancel</a>
-    <a class="btn btn-blue save" >Create Issue</a>
+    <div class="actions controls">
+      <a class="btn cancel">Cancel</a>
+      <a class="btn btn-blue save" >Create Issue</a>
+    </div>
   </div>
 </form>

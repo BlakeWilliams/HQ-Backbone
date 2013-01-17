@@ -1,15 +1,16 @@
-<h1>New Project</h1>
-<form>
-  <div class="field">
-    <input type="text" id="name" name="name" placeholder="Project Name" value="<%= @project.get('name') %>"/>
-  </div>
+<form class="full">
+  <div class="fields">
+    <div class="field">
+      <input type="text" id="name" name="name" placeholder="Project Name"/>
+    </div>
 
-  <div class="field">
-    <textarea id="description" name="description" placeholder="Project Description"><%= @project.get('description') %></textarea>
-  </div>
+    <div class="field">
+      <textarea id="description" name="description" placeholder="Project Description"></textarea>
+    </div>
 
-  <div class="actions">
-    <a class="btn cancel">Cancel</a>
-    <a class="btn btn-primary save" >Create Project</a>
+    <div class="actions">
+      <a class="btn cancel">Cancel</a>
+      <a class="btn-green save" >Create Project</a>
+    </div>
   </div>
 </form>

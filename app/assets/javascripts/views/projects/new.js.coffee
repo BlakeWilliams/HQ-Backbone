@@ -6,13 +6,15 @@ class HQ.Views.ProjectNew extends HQ.View
     'click .cancel': 'cancel'
 
   initialize: ->
+    @model = new HQ.Models.Project()
     @model.on 'error', (model, response, options) =>
       @errors = JSON.parse(response.responseText)
-      @render()
+      @renderErrors()
 
   render: ->
     $(@el).html @template(project: @model)
     @renderErrors()
+    this
 
   renderErrors: ->
     for error of @errors
@@ -27,10 +29,14 @@ class HQ.Views.ProjectNew extends HQ.View
     @model.save attributes, 
       success: =>
         HQ.projects.add @model
-        HQ.router.navigate '/projects', true
+        @parent.render()
+        @_destroy()
+        @el().empty()
       error: =>
         @$el.find('.save').removeAttr 'disabled'
 
+
   cancel: (e) ->
     e.preventDefault()
-    HQ.router.navigate $(e.currentTarget).attr('href'), true
+    @_destroy()
+    $(@el).empty()
