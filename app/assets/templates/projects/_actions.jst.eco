@@ -8,6 +8,8 @@
   <a class="btn action overdue  <%= 'current red' if @filter == "overdue" %>" data-name="overdue">Overdue <span><%= @project.issues.overdue().length %></span></a>
 </div>
 
+<div class="clear"></div>
+
 <!--
 <div id="issue-progress">
   <div id="open" style="width: <%= ((@project.issues.open().length - @project.issues.overdue().length - @project.issues.today().length) / @total) * 100 %>%;"></div>
