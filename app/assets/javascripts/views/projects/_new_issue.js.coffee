@@ -2,6 +2,7 @@ HQ.Views.NewIssue = HQ.View.extend
   template: Handlebars.templates['projects/_new_issue']
 
   events:
+    'click .new-issue': 'toggle'
     'click .save': 'save'
     'click .cancel': 'cancel'
 
@@ -26,6 +27,11 @@ HQ.Views.NewIssue = HQ.View.extend
     for error of @errors
       $('#' + error).addClass('error')
 
+  toggle: (e) ->
+    e.preventDefault()
+    @toggled = true
+    @render()
+
   save: (e) ->
     e.preventDefault()
     attributes = 
@@ -46,5 +52,5 @@ HQ.Views.NewIssue = HQ.View.extend
 
   cancel: (e) ->
     e.preventDefault() if e
-    @_destroy()
-    @$el.empty()
+    @toggled = false
+    @render()

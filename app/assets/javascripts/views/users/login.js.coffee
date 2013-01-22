@@ -1,7 +1,8 @@
 HQ.Views.Login = HQ.View.extend
-  template: JST['users/login']
+  template: Handlebars.templates['users/login']
 
   initialize: ->
+    $('body').addClass('login-body')
     @url = 'http://www.gravatar.com/avatar/.jpg?s=80'
     @render()
 
@@ -39,5 +40,6 @@ HQ.Views.Login = HQ.View.extend
       HQ.router.gotoProjects()
 
    leave: ->
+     $('body').removeClass('login-body')
      HQ.Layout.toggleLayout true
      console.log 'leave'

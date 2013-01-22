@@ -1,3 +1,7 @@
+.login-body {
+  background: #4A525A;
+}
+
 #login {
   background: #fff;
   height: 195px;
@@ -9,30 +13,23 @@
   top: 50%;
   width: 250px;
 
-  border-radius: 3px;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-
-  box-shadow: 0 1px 4px #888;
-  -moz-box-shadow: 0 1px 4px #888;
-  -webkit-box-shadow: 0 1px 4px #888;
-  
-  #gravatar {
-    display: block;
-    margin: 0 auto;
-    margin-bottom: 10px;
-
-    height: 80px;
-    width: 80px;
-
-    box-shadow: 0 0px 4px #888;
+  h1 {
+    color: #4A525A;
+    margin-top: 0;
+    text-shadow: 0 -1px solid #000;
+    text-align: center;
   }
 
   input[type=text],
   input[type=password] {
-    width: 238px;
+    padding: 9px;
+    width: 228px;
   }
   input[type=submit] {
+    color: #777;
+    font-size: 18px;
     width: 250px;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 }
