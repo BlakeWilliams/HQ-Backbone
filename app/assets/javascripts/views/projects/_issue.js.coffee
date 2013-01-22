@@ -1,19 +1,18 @@
 HQ.Views.ProjectIssue = HQ.View.extend
-  template: JST['projects/_issue']
+  template: Handlebars.templates['projects/_issue']
+  tagName: 'tr'
   className: 'issue'
 
   initialize: ->
     @model.on 'change', @render, this
 
   events:
-    'click .issue-name a': 'gotoIssue'
     'click .toggle': 'toggle'
 
   render: ->
     $(@el).html @template
       issue: @model
-      statusClass: @issueStatus()
-      #this
+    this
       
   gotoIssue: (e) ->
     e.preventDefault() 
@@ -30,5 +29,6 @@ HQ.Views.ProjectIssue = HQ.View.extend
       return 'open'
 
   toggle: ->
+    console.log @
     @model.toggleStatus()
-    @parent.renderChildren()
+    @parent.actionsView.render()

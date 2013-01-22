@@ -1,0 +1,9 @@
+<div class="project-top">
+  {{#if editTitle}}
+    <input type="text" class='title-input' value="{{project.attributes.name}}"/>
+  {{else}}
+    <h1 class="title">{{project.attributes.name}}</h1>
+    <a class="options"><i class="icon-cog"></i></a>
+  {{/if}}
+</div>
+<p>{{project.attributes.description}}</p>

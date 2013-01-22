@@ -26,10 +26,10 @@ class HQ.Models.Issue extends HQ.Model
       merge: true
     @set 'comments', null
 
-  resolved: ->
+  resolved: =>
     @get('status') == "resolved"
 
-  open: ->
+  open: =>
     @get('status') == "open"
 
   today: ->

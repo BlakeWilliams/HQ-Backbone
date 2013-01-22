@@ -1,17 +1,21 @@
 HQ.Views.NewIssue = HQ.View.extend
-  template: JST['issues/new']
+  template: Handlebars.templates['projects/_new_issue']
 
   events:
     'click .save': 'save'
     'click .cancel': 'cancel'
 
   initialize: ->
+    @toggled = false
+
     @model.on 'error', (model, response, options) =>
       @errors = JSON.parse(response.responseText)
       @render()
 
   render: ->
-    $(@el).html @template(issue: @model)
+    $(@el).html @template
+      toggled: @toggled
+
     $('#date').datepicker
       constrainInput: true
       dateFormat: 'mm/dd/yy'
@@ -39,7 +43,6 @@ HQ.Views.NewIssue = HQ.View.extend
         @cancel()
       error: =>
         @$el.find('.save').removeAttr 'disabled'
-
 
   cancel: (e) ->
     e.preventDefault() if e

@@ -2,6 +2,9 @@ class HQ.Collections.Issues extends HQ.Collection
   model: HQ.Models.Issue
   url: '/issues'
 
+  initialize: ->
+    @filterBy = 'open'
+
   comparator: (a, b) ->
     if a.date().getTime() == b.date().getTime()
       if a.id > b.id
@@ -32,8 +35,12 @@ class HQ.Collections.Issues extends HQ.Collection
       date.setDate(new Date().getDate() - 1);
       (issue.date().getTime() < date.getTime()) && issue.get('status') != 'resolved'
 
+  setFilter: (filter) ->
+    @filterBy = filter
+    @trigger 'change'
 
-  filtered: (filter) ->
+  filtered: (filter=null) ->
+    filter = @filterBy unless filter
     switch filter
       when "open" then @open()
       when "resolved" then @resolved()

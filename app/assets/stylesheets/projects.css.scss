@@ -2,6 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.new-issue {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+#issue-list {
+}
+
 .project-top {
   overflow: hidden;
   .title {
@@ -40,104 +49,41 @@
 }
 
 #issue-list {
-  border-bottom: #f1f1f1;
-  .issue {
-    border-bottom: 1px solid #e6e6e6;
-    border-top: 1px solid #f6f6f6;
-    clear: both;
-    overflow: hidden;
-    padding: 5px;
-    padding-bottom: 4px;
-    position: relative;
+  border-bottom: 1px solid #DDDDDD;
 
-    .date {
-      font-weight: 500;
-      &.resolved {
-        color: #438743;
-      }
-      &.open {
-        color: #777;
-      }
-      &.overdue {
-        color: #D14741;
-      }
-      &.today {
-        color: #F89406;
-      }
-    }
-
-    &:first-child {
-      border-top: 0;
-    }
-
-    .left { float: left; }
-    .right { float: right; }
-
-    .icon-check,
-    .icon-check-empty {
-      color: #666;
+  .checkbox {
+    color: #999;
+    padding-top: 9px;
+    width: 1px;
+    .toggle {
       cursor: pointer;
-      font-size: 15px;
-      margin-right: 2px;
-    }
-
-    h4 {
-      margin: 0;
-      a {
-        color: #4e4e4e;
-        &:hover {
-          color: #222;
-          text-decoration: none;
-        }
-      }
-      &.resolved {
-        a {
-          color: #888;
-        }
-      }
-    }
-    p {
-      color: #888;
-      margin-bottom: 0;
-      margin-top: 0px;
     }
   }
+
+  .name {
+    padding-left: 0;
+  }
+
+  .due {
+    width: 1px;
+  }
+
 }
 
-
-
-#issue-progress {
-  background: #ccc;
-  clear: both;
-  height: 5px;
-  width: 100%;
-  & > div {
-    height: 5px;
-    float: left;
-  }
-  #open {
-    background: #000;
-    width: 0;
-  }
-  #resolved {
-    background: #51A451;
-  }
-  #today {
-    background: #F89406;
-  }
-  #overdue {
-    background: #D14741;
-  }
-}
 
 #actions {
   margin-bottom: 15px;
   overflow: hidden;
   padding: 5px 0;
 
-  a {
-    margin-right: 15px;
+  .assignee-filter {
+    margin-left: 0;
   }
+
+  a {
+    margin-left: 15px;
+  }
+
   p {
     display: inline;
     margin-left: 15px;

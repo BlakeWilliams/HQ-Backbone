@@ -1,11 +1,12 @@
 class HQ.Views.Layout extends HQ.View
-  template: JST['layout']
+  template: Handlebars.templates['layout']
 
   initialize: ->
     @showLayout = true
 
   events:
     'click header h1': 'goHome'
+    'click .hq-link': 'gotoLink'
 
   render: ->
     $(@el).html @template
@@ -29,6 +30,10 @@ class HQ.Views.Layout extends HQ.View
       @showLayout = !@showLayout
     @render()
 
-
   goHome: ->
     HQ.router.navigate '/', true
+
+  gotoLink: (e) ->
+    e.preventDefault()
+    target = $(e.currentTarget)
+    HQ.router.navigate target.attr('href'), true

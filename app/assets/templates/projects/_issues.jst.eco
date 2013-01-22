@@ -16,7 +16,7 @@
       </tr>
     </thead>
     -->
-    <% for issue in @project.issues.filtered(@filter): %>
+    <% for issue in @project.issues.filtered(): %>
       <tr>
         <td><i class="toggle icon-check<%= '-empty' if issue.open() %>"></i></td>
         <td><%= issue.get 'name' %></td>

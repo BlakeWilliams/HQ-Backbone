@@ -1,5 +1,9 @@
 HQ.Views.ProjectActions = HQ.View.extend
-  template: JST['projects/_actions']
+  template: Handlebars.templates['projects/_actions']
+
+  initialize: ->
+    @model.on 'change', @render, this
+    @model.issues.on 'reset', @render, this
 
   events:
     'click .action': 'changeFilter'
@@ -7,11 +11,10 @@ HQ.Views.ProjectActions = HQ.View.extend
   render: ->
     $(@el).html @template
       project: @model
-      filter: @parent.filter
 
   changeFilter: (e) ->
     e.preventDefault()
-    @parent.filter = $(e.currentTarget).data('name')
-    @parent.renderIssues()
+    @model.issues.setFilter $(e.currentTarget).data('name')
+    HQ.router.navigate @model.url() + "/#{@model.issues.filterBy}"
     @render()
 

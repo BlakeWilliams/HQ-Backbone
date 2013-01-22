@@ -3,11 +3,10 @@ class HQ.Router extends Backbone.Router
     '': 'projects'
     'projects': 'projects'
     'projects/new': 'newProject'
-    'projects/:id': 'project'
+    'projects/:id(/:filter)': 'project'
     'projects/:project_id/issues/new': 'newIssue'
     'projects/:project_id/issues/:id': 'issue'
     'login': 'login'
-
 
     'issues': 'issues'
 

@@ -1,22 +1,24 @@
 HQ.Views.Projects = HQ.View.extend
-  template: JST['projects/projects']
-  projectsTemplate: JST['projects/_projects']
+  template: Handlebars.templates['projects/projects']
+  projectsTemplate: Handlebars.templates['projects/_projects']
   newProjectTemplate: JST['projects/new']
 
   events: ->
-    'click h2 a': 'gotoProject'
     'click #new-project-btn': 'newProject'
 
   initialize: (options) ->
     @collection.bind 'reset', @render, this
 
   render: ->
-    $(@el).html @template(projects: @collection)
+    $(@el).html @template
+      projects: @collection.models
+
     @renderProjects()
     this
 
   renderProjects: ->
-    $(@el).find('#projects').html @projectsTemplate(projects: @collection)
+    $(@el).find('#projects').html @projectsTemplate
+      projects: @collection.models
 
   gotoProject: (e) ->
     e.preventDefault()

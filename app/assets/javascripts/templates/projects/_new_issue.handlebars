@@ -1,0 +1,24 @@
+{{#if toggled}}
+  <form class="full">
+    <div class="fields">
+      <div class="field">
+        <input type="text" id="name" name="name" placeholder='Issue Name'/>
+      </div>
+
+      <div class="field">
+        <input type="text" id="date" name="due"  placeholder='Issue Date'/>
+      </div>
+
+      <div class="field">
+        <textarea id="description" name="description" placeholder='Issue Description'></textarea>
+      </div>
+
+      <div class="actions controls">
+        <a class="btn cancel">Cancel</a>
+        <a class="btn btn-blue save" >Create Issue</a>
+      </div>
+    </div>
+  </form>
+{{else}}
+  <a href="" class="new-issue">New Issue</a>
+{{/if}}

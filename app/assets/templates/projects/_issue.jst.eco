@@ -1,9 +1,3 @@
-<div class="left">
- <h4 class="issue-name <%= @statusClass %>" data-id="<%= @issue.get('id') %>">
-   <i class="toggle icon-check<%= '-empty' if @issue.open() %>"></i>
-   <a href="<%= @issue.url() %>" data-id="<%= @issue.get('id') %>"><%= @issue.get 'name' %></a>
-   </h4>
-</div>
-<div class="right">
-  <p class="date <%= @statusClass %>"><%= @issue.get('due') %></p>
-</div>
+  <td class="checkbox"><i class="toggle icon-check<%= '-empty' if @issue.open() %>"></i></td>
+  <td class="name"><%= @issue.get 'name' %></td>
+  <td class="due"><%= @issue.get 'due' %></td>

@@ -2,15 +2,17 @@
 #= require jquery-ui
 #= require underscore
 #= require backbone
+#= require handlebars
 #= require_self
 #= require hq
 #= require_tree ./routers
 #= require ./router
 #= require_tree ../templates
+#= require_tree ./helpers
+#= require_tree ./templates
 #= require_tree ./models
 #= require_tree ./collections
 #= require_tree ./views
-#= require md5
 
 window.HQ =
   Models: {}

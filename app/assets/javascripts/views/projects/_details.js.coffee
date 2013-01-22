@@ -1,5 +1,5 @@
 HQ.Views.ProjectDetails = HQ.View.extend
-  template: JST['projects/_details']
+  template: Handlebars.templates['projects/_details']
 
   events:
     'dblclick .title': 'toggleTitleEdit'

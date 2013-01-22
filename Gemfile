@@ -24,6 +24,7 @@ end
 
 gem 'jquery-rails'
 gem 'eco'
+gem 'backbone_handlebars'
 
 gem 'jbuilder'
 

@@ -17,12 +17,10 @@ body {
 }
 
 #container {
-  padding-left: 230px;
-  width: 960px;
+  width: 100%;
   header {
-    h1 {
+    h1 a {
       color: #fff;
-      cursor: pointer;
       font-size: 24px;
     }
   }
@@ -54,11 +52,11 @@ body {
 }
 
 #outlet {
-  float: left;
   height: 100%;
   padding: 10px 20px;
+  margin-left: 230px;
   position: relative;
-  width: 100%;
+  padding-right: 13px;
 
   border-radius: 3px;
   -moz-border-radius: 3px;
@@ -130,9 +128,9 @@ form {
     width: 655px;
   }
   &.full {
-    background: #e1e1e1;
+    background: #f8f8f8;
     padding: 20px;
-    border: 1px solid #d7d7d7;
+    //border: 1px solid #d7d7d7;
     overflow: hidden;
 
     border-radius: 5px;
@@ -145,9 +143,13 @@ form {
 
     input[type=text],
     input[type=password] {
+      padding-left: 7px;
+      padding-right: 7px;
       width: 100%;
     }
     textarea {
+      padding-left: 7px;
+      padding-right: 7px;
       width: 100%;
     }
     .actions {

@@ -1,16 +1,13 @@
 HQ.Views.Project = HQ.View.extend
-  template: JST['projects/project']
-  issuesTemplate: JST['projects/_issues']
+  template: Handlebars.templates['projects/project']
+  issuesTemplate: Handlebars.templates['projects/_issues']
   newIssueTemplate: JST['issues/new']
-
-  events:
-    'click .new-issue': 'newIssue'
-    'click .delete': 'delete'
 
   initialize: (options) ->
     @issueViews = []
-    @filter = 'open'
-    @model.on 'change', @renderIssues, this
+    @model.issues.on 'change', @renderIssues, this
+    @model.issues.once 'loaded', @renderIssues, this
+    @model.issues.setFilter('open')
 
     @poll = setInterval =>
       @model.fetch()
@@ -18,30 +15,37 @@ HQ.Views.Project = HQ.View.extend
   
   render: ->
     $(@el).html @template
-      project: @model
 
     @detailView = new HQ.Views.ProjectDetails 
       el: $(@el).find('#project-details')
       model: @model
-    @detailView.render()
 
     @actionsView = new HQ.Views.ProjectActions
       el: $(@el).find('#actions')
       model: @model
-    @actionsView.parent = this
-    @actionsView.render()
 
+    @newIssueView = new HQ.Views.NewIssue
+      el: $(@el).find('#new-issue')
+      model: new HQ.Models.Issue {project: @model}
+
+    for child in ['newIssueView', 'actionsView', 'detailView']
+      @[child].parent = this
+      @[child].render()
+
+    @renderIssues()
     this
-
 
   renderIssues: ->
     $(@el).find('#issues').html @issuesTemplate
-      filter: @filter
       project: @model
 
     @cleanUpIssues()
+    filteredIssues = @model.issues.filtered()
 
-    for issue in @model.issues.filtered(@filter)
+    if filteredIssues.length == 0
+      $(@el).find('#issue-list').append('<h3>No issues found.</h3>')
+
+    for issue in filteredIssues
       view = new HQ.Views.ProjectIssue(model: issue)
       view.parent = this
       @issueViews.push(view)
@@ -50,21 +54,8 @@ HQ.Views.Project = HQ.View.extend
   cleanUpIssues: ->
     for view in @issueViews
       view._destroy()
-
-  newIssue: (e) ->
-    e.preventDefault()
-    issue = new HQ.Models.Issue(project: @model)
-    view = new HQ.Views.NewIssue
-      model: issue
-      el: $(@el).find('#new-issue')
-    view.render()
-
-  delete: (e) ->
-    e.preventDefault()
-    if confirm("Are you sure you want to delete this project?")
-      @model.destroy()
-      HQ.projects.remove(@model)
-      HQ.router.gotoProjects()
+      view.remove()
+    @issueViews = []
 
   leave: ->
     clearInterval @poll
