@@ -2,11 +2,11 @@ HQ.Views.Login = HQ.View.extend
   template: Handlebars.templates['users/login']
 
   initialize: ->
-    $('body').addClass('login-body')
-    @url = 'http://www.gravatar.com/avatar/.jpg?s=80'
     @render()
 
-  enter: -> HQ.Layout.toggleLayout(false)
+  enter: -> 
+    HQ.Layout.toggleLayout(false)
+    $('body').addClass('login-body')
 
   events:
     'keyup #email':  'setGravatar'

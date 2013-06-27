@@ -138,6 +138,8 @@ form {
     -webkit-border-radius: 5px;
 
     .fields {
+      max-width: 500px;
+      min-width: 390px;
       margin-right: 10px;
     }
 

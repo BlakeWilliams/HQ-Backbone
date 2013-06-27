@@ -5,7 +5,7 @@
 #= require handlebars
 #= require_self
 #= require hq
-#= require_tree ./routers
+#= require_tree ./routes
 #= require ./router
 #= require_tree ../templates
 #= require_tree ./helpers

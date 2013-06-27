@@ -17,10 +17,6 @@
     background: #51A451;
   }
 }
-
-#issue {
-}
-
 .issue-details {
   margin-top: 4px;
   margin-bottom: 3px;
@@ -58,6 +54,10 @@
     padding: 8px;
     font-size: 14px;
     width: 500px 
+  }
+
+  #date {
+    width: 50%;
   }
 
   textarea {

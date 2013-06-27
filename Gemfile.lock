@@ -29,7 +29,7 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     arel (3.0.2)
-    backbone_handlebars (0.0.1)
+    backbone_handlebars (0.0.2)
       execjs
       sprockets
       tilt
@@ -76,7 +76,7 @@ GEM
       multi_json (~> 1.3)
     pg (0.14.1)
     polyglot (0.3.3)
-    rack (1.4.1)
+    rack (1.4.4)
     rack-cache (1.2)
       rack (>= 0.4)
     rack-ssl (1.3.2)
