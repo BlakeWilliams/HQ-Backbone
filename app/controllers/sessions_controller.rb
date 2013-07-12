@@ -2,7 +2,9 @@ class SessionsController < ApplicationController
   skip_before_filter :require_login
 
   def create
+    token = form_authenticity_token
     user = login(params[:email], params[:password])
+    session[:_csrf_token] = token
     if user
       render json: true
     else
