@@ -41,7 +41,7 @@ $dark: #777777;
 
     background-color: darken($color, 10);
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(darken($color, 4)), to(darken($color,8)));
-    background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+    //background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
   }
 
   border-radius: 2px;
@@ -53,8 +53,8 @@ $dark: #777777;
   border-color: #c8c8c8;
   color: #333333;
   &:hover {
-    border-color: darken(#c8c8c8, 5);
     color: #333333;
+    border-color: darken(#c8c8c8, 5);
   }
 
   &.red   { @include button($red); }

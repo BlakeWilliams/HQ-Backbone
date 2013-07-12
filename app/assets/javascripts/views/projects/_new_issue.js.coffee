@@ -46,6 +46,7 @@ HQ.Views.NewIssue = HQ.View.extend
       success: =>
         @model.project.issues.add @model
         @model.project.trigger('change')
+        @model = new HQ.Models.Issue(project: @model.project)
         @cancel()
       error: =>
         @$el.find('.save').removeAttr 'disabled'
